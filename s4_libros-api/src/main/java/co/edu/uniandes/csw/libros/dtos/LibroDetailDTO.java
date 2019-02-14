@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author estudiante
+ * @author Miguel Muñoz
  */
 public class LibroDetailDTO extends LibroDTO implements Serializable{
 
