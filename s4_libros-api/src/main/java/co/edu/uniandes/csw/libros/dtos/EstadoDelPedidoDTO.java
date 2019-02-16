@@ -5,11 +5,13 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author estudiante
  */
-public enum EstadoDelPedidoDTO  {
+public enum EstadoDelPedidoDTO implements Serializable  {
     
     ACEPTADO_POR_EL_VENDEDOR,
     ENVIADO,

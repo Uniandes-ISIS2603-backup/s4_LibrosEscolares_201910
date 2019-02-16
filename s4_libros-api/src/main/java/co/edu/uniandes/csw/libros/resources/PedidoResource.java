@@ -18,13 +18,13 @@ import javax.ws.rs.Produces;
  * @author Diego Gómez
  */
 
-@Path("respuestas")
+@Path("pedidos")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class PedidoResource {
     
-        private static final Logger LOGGER = Logger.getLogger(RespuestaResource.class.getName());
+        private static final Logger LOGGER = Logger.getLogger(PedidoResource.class.getName());
         
         @POST
         public PedidoDTO crearPedido(PedidoDTO pedido){

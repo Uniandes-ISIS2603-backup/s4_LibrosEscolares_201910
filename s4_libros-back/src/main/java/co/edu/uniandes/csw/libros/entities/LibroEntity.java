@@ -24,6 +24,14 @@ public class LibroEntity extends BaseEntity implements Serializable
     private String estado;
     private Icon portada;
     private Double precio;
+    
+    
+    /**
+     * Te agregué el contructor vacío por que me daba error al intentar desplegar
+     * la aplicación. :D
+     * Author Diego Gómez
+     */
+    public LibroEntity(){}
 
     public LibroEntity(String ISBN, String titulo, String autor, String editorial, int edicion, String estado, Icon portada, Double precio) {
         this.ISBN = ISBN;
