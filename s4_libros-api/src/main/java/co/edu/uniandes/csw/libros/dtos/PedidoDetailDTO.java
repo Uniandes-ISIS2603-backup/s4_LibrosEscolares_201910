@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author estudiante
+ * @author Diego Gómez
  */
 public class PedidoDetailDTO extends PedidoDTO implements Serializable {
     

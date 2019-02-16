@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  *
- * @author estudiante
+ * @author Diego Gómez
  */
 public class PedidoDTO implements Serializable{
     
