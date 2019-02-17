@@ -31,18 +31,8 @@ public class LibroEntity extends BaseEntity implements Serializable
      * la aplicación. :D
      * Author Diego Gómez
      */
-    public LibroEntity(){}
-
-    public LibroEntity(String ISBN, String titulo, String autor, String editorial, int edicion, String estado, Icon portada, Double precio) {
-        this.ISBN = ISBN;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.editorial = editorial;
-        this.edicion = edicion;
-        this.estado = estado;
-        this.portada = portada;
-        this.precio = precio;
-    }
+    public LibroEntity()
+    {}
 
     public String getISBN() {
         return ISBN;
