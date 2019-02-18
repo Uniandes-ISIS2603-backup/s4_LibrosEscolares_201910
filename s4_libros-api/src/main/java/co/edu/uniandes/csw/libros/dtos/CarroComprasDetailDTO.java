@@ -6,17 +6,14 @@
 package co.edu.uniandes.csw.libros.dtos;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
- * @author Miguel Muñoz
+ * @author Andres Ramirez
  */
-public class LibroDetailDTO extends LibroDTO implements Serializable{
-
-    /**
-     *
-     */
-    public LibroDetailDTO() {
-    }
+public class CarroComprasDetailDTO extends CarroComprasDTO implements Serializable{
     
+    
+    private List<LibroDTO> libros;
 }

@@ -9,14 +9,14 @@ import java.io.Serializable;
 
 /**
  *
- * @author Miguel Muñoz
+ * @author estudiante
  */
-public class LibroDetailDTO extends LibroDTO implements Serializable{
-
-    /**
-     *
-     */
-    public LibroDetailDTO() {
-    }
+public enum EstadoDelPedidoDTO implements Serializable  {
+    
+    ACEPTADO_POR_EL_VENDEDOR,
+    ENVIADO,
+    EN_REVISION,
+    RECIBIDO,
+    NO_ACEPTADO
     
 }

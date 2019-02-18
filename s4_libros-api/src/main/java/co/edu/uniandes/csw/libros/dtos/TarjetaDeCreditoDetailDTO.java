@@ -5,13 +5,18 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import java.io.Serializable;
+
 /**
  *
- * @author estudiante
+ * @author Miguel Muñoz
  */
-public class TarjetaDeCreditoDetailDTO {
+public class TarjetaDeCreditoDetailDTO extends TarjetaDeCreditoDTO implements Serializable {
 
-    public TarjetaDeCreditoDetailDTO() {
+    public TarjetaDeCreditoDetailDTO(int numero, String fechadevencimiento, int codigodeseguridad) {
+        super(numero, fechadevencimiento, codigodeseguridad);
     }
+
+   
     
 }
