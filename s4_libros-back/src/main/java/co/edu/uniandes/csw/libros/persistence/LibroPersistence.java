@@ -35,4 +35,34 @@ public class LibroPersistence {
        TypedQuery query= em.createQuery("select u from LibroEntity", LibroEntity.class);
        return query.getResultList();
     }
+    
+    public  LibroEntity findByName(String titulo)
+    {
+         TypedQuery query= em.createQuery("select u from LibroEntity where u.titulo = :title", LibroEntity.class);
+         query= query.setParameter("title", titulo);
+         List<LibroEntity> names=query.getResultList();
+         LibroEntity resultado=null;
+         if(names!=null && !names.isEmpty())
+         {
+             resultado=names.get(0);
+         }
+         return resultado;
+    }
+    public void verificarISBN(String ISBN) throws Exception
+    {
+       
+        
+         String t= ISBN.replaceAll("-","");
+          int s=0;
+        for(int i=0; i<12;i++)
+        {
+            s+=Character.getNumericValue(t.charAt(i)) ;
+        }
+        int u= Character.getNumericValue(t.charAt(12));
+         if(t.length()!=13||s%u!=0)
+        {
+            throw new Exception();
+        }
+       
+    }
 }

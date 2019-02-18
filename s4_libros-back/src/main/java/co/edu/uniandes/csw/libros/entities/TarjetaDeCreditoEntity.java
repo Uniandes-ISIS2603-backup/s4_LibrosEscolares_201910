@@ -15,17 +15,17 @@ import javax.persistence.Entity;
 @Entity
 public class TarjetaDeCreditoEntity extends BaseEntity implements Serializable
 {
-    private int numero;
+    private String numero;
     private String fechadevencimiento;
     private int codigodeseguridad;
 
     public TarjetaDeCreditoEntity() {
     }
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
