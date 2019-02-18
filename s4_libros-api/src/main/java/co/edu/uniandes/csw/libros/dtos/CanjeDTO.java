@@ -23,6 +23,7 @@ public class CanjeDTO implements Serializable {
     private RespuestaDTO respuesta;
     
     
+    
     public void CanjeDTO(){}
 
     /**
