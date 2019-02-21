@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.libros.persistence;
 
 import co.edu.uniandes.csw.libros.entities.TarjetaDeCreditoEntity;
+import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,5 +36,13 @@ public class TarjetaDeCreditoPersistence {
        TypedQuery query= em.createQuery("select u from TarjetaDeCreditoEntity", TarjetaDeCreditoEntity.class);
        return query.getResultList();
     }
+
+    public void verificarNumero(TarjetaDeCreditoEntity tarjeta) throws BusinessLogicException
+    {
+         String c= tarjeta.getNumero();
+         if(c.length()!=12)
+             throw new BusinessLogicException("Numero no valido");
+    }
+   
     
 }
