@@ -61,8 +61,8 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     /**
      * @param calificacion the calificacion to set
      */
-    public void setCalificacion(int calificacion) {
-        this.calificacion = calificacion;
+    public void setCalificacion(int pCalificacion) {
+        calificacion = pCalificacion;
     }
 
     
