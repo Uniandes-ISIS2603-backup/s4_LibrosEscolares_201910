@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class TarjetaDeCreditoDetailDTO extends TarjetaDeCreditoDTO implements Serializable {
 
-    public TarjetaDeCreditoDetailDTO(int numero, String fechadevencimiento, int codigodeseguridad) {
+    public TarjetaDeCreditoDetailDTO(String numero, String fechadevencimiento, int codigodeseguridad) {
         super(numero, fechadevencimiento, codigodeseguridad);
     }
 

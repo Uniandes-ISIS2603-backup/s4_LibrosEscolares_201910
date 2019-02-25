@@ -10,7 +10,7 @@ package co.edu.uniandes.csw.libros.dtos;
  * @author Miguel Muñoz
  */
 public class TarjetaDeCreditoDTO {
-    private int numero;
+    private String numero;
     private String fechadevencimiento;
     private int codigodeseguridad;
 
@@ -20,7 +20,7 @@ public class TarjetaDeCreditoDTO {
      * @param fechadevencimiento
      * @param codigodeseguridad
      */
-    public TarjetaDeCreditoDTO(int numero, String fechadevencimiento, int codigodeseguridad) {
+    public TarjetaDeCreditoDTO(String numero, String fechadevencimiento, int codigodeseguridad) {
         this.numero = numero;
         this.fechadevencimiento = fechadevencimiento;
         this.codigodeseguridad = codigodeseguridad;
@@ -30,7 +30,7 @@ public class TarjetaDeCreditoDTO {
      *
      * @return
      */
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
@@ -38,7 +38,7 @@ public class TarjetaDeCreditoDTO {
      *
      * @param numero
      */
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

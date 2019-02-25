@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.libros.test.persistence;
 
 import co.edu.uniandes.csw.libros.entities.RespuestaEntity;
+import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.RespuestaPersistence;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -44,7 +45,7 @@ public class RespuestaEntityPersistence {
     }
     
     @Test
-    public void createRespuestaTest() {
+    public void createRespuestaTest() throws BusinessLogicException{
         PodamFactory factory = new PodamFactoryImpl();
         RespuestaEntity re = factory.manufacturePojo(RespuestaEntity.class);
         RespuestaEntity respuesta = ep.create(re);
