@@ -32,14 +32,5 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
             calificacion = entity.getCalificacion();
             id = entity.getId();
         }
-    }
-    public UsuarioEntity toEntity() {
-    UsuarioEntity entity = new UsuarioEntity();
-    entity.setNombreUsuario(nombreUsuario);
-    entity.setCorreo(correo);
-    entity.setCalificacion(calificacion);
-    entity.setId(id);
-    return entity;
-}
-    
+    } 
 }
