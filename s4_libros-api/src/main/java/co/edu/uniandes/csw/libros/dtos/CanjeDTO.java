@@ -22,6 +22,14 @@ public class CanjeDTO implements Serializable {
     
     private RespuestaDTO respuesta;
     
+    private LibroDTO libroOfrecido;
+    
+    private LibroDTO libroPedido;
+    
+    private UsuarioDTO usuarioQueOfrece;
+    
+    private UsuarioDTO usuarioQueRecibe;
+    
     
     
     public void CanjeDTO(){}
@@ -80,6 +88,62 @@ public class CanjeDTO implements Serializable {
      */
     public void setRespuesta(RespuestaDTO respuesta) {
         this.respuesta = respuesta;
+    }
+
+    /**
+     * @return the libroOfrecido
+     */
+    public LibroDTO getLibroOfrecido() {
+        return libroOfrecido;
+    }
+
+    /**
+     * @param libroOfrecido the libroOfrecido to set
+     */
+    public void setLibroOfrecido(LibroDTO libroOfrecido) {
+        this.libroOfrecido = libroOfrecido;
+    }
+
+    /**
+     * @return the libroPedido
+     */
+    public LibroDTO getLibroPedido() {
+        return libroPedido;
+    }
+
+    /**
+     * @param libroPedido the libroPedido to set
+     */
+    public void setLibroPedido(LibroDTO libroPedido) {
+        this.libroPedido = libroPedido;
+    }
+
+    /**
+     * @return the usuarioQueOfrece
+     */
+    public UsuarioDTO getUsuarioQueOfrece() {
+        return usuarioQueOfrece;
+    }
+
+    /**
+     * @param usuarioQueOfrece the usuarioQueOfrece to set
+     */
+    public void setUsuarioQueOfrece(UsuarioDTO usuarioQueOfrece) {
+        this.usuarioQueOfrece = usuarioQueOfrece;
+    }
+
+    /**
+     * @return the usuarioQueRecibe
+     */
+    public UsuarioDTO getUsuarioQueRecibe() {
+        return usuarioQueRecibe;
+    }
+
+    /**
+     * @param usuarioQueRecibe the usuarioQueRecibe to set
+     */
+    public void setUsuarioQueRecibe(UsuarioDTO usuarioQueRecibe) {
+        this.usuarioQueRecibe = usuarioQueRecibe;
     }
     
 }
