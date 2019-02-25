@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.UsuarioEntity;
 import java.io.Serializable;
 
 /**
@@ -13,14 +14,18 @@ import java.io.Serializable;
  */
 public class UsuarioDTO implements Serializable {
 
-    private String correo;
-    private String nombreUsuario;
-    private int calificacion;
+    long id;
+    String correo;
+    String nombreUsuario;
+    Integer calificacion;
 
     
-    public UsuarioDTO()
+    public UsuarioDTO(UsuarioEntity entity)
     {
-        
+       nombreUsuario= entity.getNombreUsuario();
+       correo = entity.getCorreo();
+       calificacion = entity.getCalificacion();
+       id = entity.getId();
     }
     /**
      * @return the correo
@@ -63,5 +68,30 @@ public class UsuarioDTO implements Serializable {
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
+
+    /**
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    
+    
+    public UsuarioEntity toEntity() {
+    UsuarioEntity entity = new UsuarioEntity();
+    entity.setNombreUsuario(nombreUsuario);
+    entity.setCorreo(correo);
+    entity.setCalificacion(calificacion);
+    entity.setId(id);
+    return entity;
+}
 
 }
