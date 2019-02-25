@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.libros.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 
 /**
@@ -18,6 +19,12 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private String correo;
     private String nombreUsuario;
     private int calificacion; 
+    private List<TarjetaDeCreditoEntity> tarjetas;
+    private List<LibroEntity> libros;
+    private List<CanjeEntity> canjesRecibidos;
+    private List<CanjeEntity> canjesCreados;
+   //private List<OrdenEntity> ordenesCreadas;
+   // private List<OrdenEntity> ordenesRecibidas;
 
     public UsuarioEntity()
     {
@@ -63,6 +70,62 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
      */
     public void setCalificacion(int pCalificacion) {
         calificacion = pCalificacion;
+    }
+
+    /**
+     * @return the tarjetas
+     */
+    public List<TarjetaDeCreditoEntity> getTarjetas() {
+        return tarjetas;
+    }
+
+    /**
+     * @param tarjetas the tarjetas to set
+     */
+    public void setTarjetas(List<TarjetaDeCreditoEntity> tarjetas) {
+        this.tarjetas = tarjetas;
+    }
+
+    /**
+     * @return the libros
+     */
+    public List<LibroEntity> getLibros() {
+        return libros;
+    }
+
+    /**
+     * @param libros the libros to set
+     */
+    public void setLibros(List<LibroEntity> libros) {
+        this.libros = libros;
+    }
+
+    /**
+     * @return the canjesRecibidos
+     */
+    public List<CanjeEntity> getCanjesRecibidos() {
+        return canjesRecibidos;
+    }
+
+    /**
+     * @param canjesRecibidos the canjesRecibidos to set
+     */
+    public void setCanjesRecibidos(List<CanjeEntity> canjesRecibidos) {
+        this.canjesRecibidos = canjesRecibidos;
+    }
+
+    /**
+     * @return the canjesCreados
+     */
+    public List<CanjeEntity> getCanjesCreados() {
+        return canjesCreados;
+    }
+
+    /**
+     * @param canjesCreados the canjesCreados to set
+     */
+    public void setCanjesCreados(List<CanjeEntity> canjesCreados) {
+        this.canjesCreados = canjesCreados;
     }
 
     

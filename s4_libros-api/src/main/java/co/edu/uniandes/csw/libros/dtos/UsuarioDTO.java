@@ -14,10 +14,10 @@ import java.io.Serializable;
  */
 public class UsuarioDTO implements Serializable {
 
-    protected long id;
-    protected String correo;
-    protected String nombreUsuario;
-    protected Integer calificacion;
+    private long id;
+    private String correo;
+    private String nombreUsuario;
+    private Integer calificacion;
 
     public UsuarioDTO()
     {
@@ -25,10 +25,14 @@ public class UsuarioDTO implements Serializable {
     }
     public UsuarioDTO(UsuarioEntity entity)
     {
-       nombreUsuario= entity.getNombreUsuario();
-       correo = entity.getCorreo();
-       calificacion = entity.getCalificacion();
-       id = entity.getId();
+        if(entity!=null)
+        {
+             nombreUsuario= entity.getNombreUsuario();
+             correo = entity.getCorreo();
+             calificacion = entity.getCalificacion();
+             id = entity.getId();
+        }
+      
     }
     /**
      * @return the correo
