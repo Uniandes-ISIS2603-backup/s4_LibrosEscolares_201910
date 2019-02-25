@@ -75,7 +75,35 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     /**
      * @param calificacion the calificacion to set
      */
-    public void setCalificacion(int pCalificacion) {
-        calificacion = pCalificacion;
+    public void setCalificacion(int calificacion) {
+        calificacion = calificacion;
+    }
+
+    /**
+     * @return the canjesCreados
+     */
+    public List<CanjeEntity> getCanjesCreados() {
+        return canjesCreados;
+    }
+
+    /**
+     * @param canjesCreados the canjesCreados to set
+     */
+    public void setCanjesCreados(List<CanjeEntity> canjesCreados) {
+        this.canjesCreados = canjesCreados;
+    }
+
+    /**
+     * @return the canjesRecibidos
+     */
+    public List<CanjeEntity> getCanjesRecibidos() {
+        return canjesRecibidos;
+    }
+
+    /**
+     * @param canjesRecibidos the canjesRecibidos to set
+     */
+    public void setCanjesRecibidos(List<CanjeEntity> canjesRecibidos) {
+        this.canjesRecibidos = canjesRecibidos;
     }
 }
