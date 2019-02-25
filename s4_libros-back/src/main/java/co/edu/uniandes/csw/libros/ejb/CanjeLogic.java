@@ -19,6 +19,7 @@ import javax.inject.Inject;
 @Stateless
 public class CanjeLogic {
     
+    
     @Inject
     private CanjePersistence persistence;
     

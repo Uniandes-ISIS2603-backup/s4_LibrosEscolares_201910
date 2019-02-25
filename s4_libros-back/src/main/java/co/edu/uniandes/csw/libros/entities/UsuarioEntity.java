@@ -6,7 +6,12 @@
 package co.edu.uniandes.csw.libros.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -18,6 +23,15 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private String correo;
     private String nombreUsuario;
     private int calificacion; 
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "usuarioQueOfrece",cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<CanjeEntity> canjesCreados=new ArrayList<CanjeEntity>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "usuarioQueRecibe",cascade = CascadeType.PERSIST)
+    private List<CanjeEntity> canjesRecibidos=new ArrayList<CanjeEntity>();
+    
 
     public UsuarioEntity()
     {
@@ -64,8 +78,4 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     public void setCalificacion(int pCalificacion) {
         calificacion = pCalificacion;
     }
-
-    
-
-
 }
