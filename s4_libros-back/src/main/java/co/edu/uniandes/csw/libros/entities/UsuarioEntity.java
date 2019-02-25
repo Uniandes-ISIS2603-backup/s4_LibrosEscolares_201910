@@ -27,6 +27,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
      * @return the correo
      */
     public String getCorreo() {
+        int a = 1;
         return correo;
     }
 
