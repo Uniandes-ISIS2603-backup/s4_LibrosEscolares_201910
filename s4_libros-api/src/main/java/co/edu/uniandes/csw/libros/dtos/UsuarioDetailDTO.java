@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.UsuarioEntity;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -13,13 +15,31 @@ import java.io.Serializable;
  */
 public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
     
-   // private List<TargetaDeCreditoDTO> tarjetas;
-  //  private List<LibroDTO> libros;
-  //  private List<PedidoDTO> ordenesCreadas;
+    private List<TarjetaDeCreditoDTO> tarjetas;
+    private List<LibroDTO> libros;
+    private List<CanjeDTO> canjesRecibidos;
+    private List<CanjeDTO> canjesCreados;
+   //private List<OrdenDTO> ordenesCreadas;
    // private List<PedidoDTO> ordenesRecibidas;
     
-    public UsuarioDetailDTO()
+    public UsuarioDetailDTO(UsuarioEntity entity)
     {
-        
+        super(entity);
+        if(entity !=null)
+        {
+            nombreUsuario= entity.getNombreUsuario();
+            correo = entity.getCorreo();
+            calificacion = entity.getCalificacion();
+            id = entity.getId();
+        }
     }
+    public UsuarioEntity toEntity() {
+    UsuarioEntity entity = new UsuarioEntity();
+    entity.setNombreUsuario(nombreUsuario);
+    entity.setCorreo(correo);
+    entity.setCalificacion(calificacion);
+    entity.setId(id);
+    return entity;
+}
+    
 }
