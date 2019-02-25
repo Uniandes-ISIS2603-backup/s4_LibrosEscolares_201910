@@ -15,7 +15,6 @@ import javax.persistence.Entity;
 @Entity
 public class UsuarioEntity extends BaseEntity implements Serializable {
     
-    private long id;
     private String correo;
     private String nombreUsuario;
     private int calificacion; 
@@ -68,10 +67,5 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
 
     
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
+
 }

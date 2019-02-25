@@ -10,16 +10,19 @@ import java.io.Serializable;
 
 /**
  *
- * @author estudiante
+ * @author nf.jaramillo
  */
 public class UsuarioDTO implements Serializable {
 
-    long id;
-    String correo;
-    String nombreUsuario;
-    Integer calificacion;
+    protected long id;
+    protected String correo;
+    protected String nombreUsuario;
+    protected Integer calificacion;
 
-    
+    public UsuarioDTO()
+    {
+        
+    }
     public UsuarioDTO(UsuarioEntity entity)
     {
        nombreUsuario= entity.getNombreUsuario();

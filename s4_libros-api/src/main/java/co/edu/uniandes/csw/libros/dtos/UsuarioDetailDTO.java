@@ -22,6 +22,11 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
    //private List<OrdenDTO> ordenesCreadas;
    // private List<PedidoDTO> ordenesRecibidas;
     
+    public UsuarioDetailDTO()
+    {
+        
+    }
+    
     public UsuarioDetailDTO(UsuarioEntity entity)
     {
         super(entity);
