@@ -52,10 +52,10 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * @param nombreUsuario the nombreUsuario to set
+     * @param pNombreUsuario the nombreUsuario to set
      */
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setNombreUsuario(String pNombreUsuario) {
+        nombreUsuario = pNombreUsuario;
     }
 
     /**
