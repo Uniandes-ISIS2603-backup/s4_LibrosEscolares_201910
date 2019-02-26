@@ -24,13 +24,13 @@ public class CanjePersistence {
     @PersistenceContext(unitName = "librosPU")
     protected EntityManager em;
     
-    public CanjeEntity create(CanjeEntity pedido) {
-        em.persist(pedido);
-        return pedido;
+    public CanjeEntity create(CanjeEntity canje) {
+        em.persist(canje);
+        return canje;
     }
 
-    public CanjeEntity find(Long pedidoId) {
-        return em.find(CanjeEntity.class, pedidoId);
+    public CanjeEntity find(Long canjeId) {
+        return em.find(CanjeEntity.class, canjeId);
     }
 
     public List<CanjeEntity> findAll() {
@@ -50,5 +50,14 @@ public class CanjePersistence {
              }
          }
          return canje;
+    }
+    
+    public CanjeEntity update(CanjeEntity canjeEntity){
+        return em.merge(canjeEntity);
+    }
+    
+    public void delete(Long canjeId){
+        CanjeEntity canjeEntity=em.find(CanjeEntity.class,canjeId);
+        em.remove(canjeEntity);
     }
 }
