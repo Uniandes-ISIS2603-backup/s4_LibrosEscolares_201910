@@ -34,7 +34,7 @@ public class UsuarioLogic {
             throw new BusinessLogicException("Ya existe un usuario con ese correo");
         }
         
-        persistencia.create(usuario);
+        usuario = persistencia.create(usuario);
         return usuario;
     }
     
