@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.libros.entities.CanjeEntity;
+import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -35,5 +36,19 @@ public class CanjePersistence {
     public List<CanjeEntity> findAll() {
         TypedQuery<CanjeEntity> query = em.createQuery("select u from PedidoEntity u", CanjeEntity.class);
         return query.getResultList();
+    }
+
+    
+    public  CanjeEntity findByOfferedBook(LibroEntity libro)
+    {
+         List<CanjeEntity> canjes=findAll();
+         CanjeEntity canje=null;
+         for(int i=0;i<canjes.size();i++){
+             if(canjes.get(i).getLibroOfrecido().getId().equals(libro.getId())){
+                 canje=canjes.get(i);
+                 break;
+             }
+         }
+         return canje;
     }
 }

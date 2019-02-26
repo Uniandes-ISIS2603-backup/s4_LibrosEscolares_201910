@@ -22,7 +22,17 @@ public class CanjeLogic {
     @Inject
     private CanjePersistence persistence;
     
-    public CanjeEntity createCanje(CanjeEntity canje){
+    public CanjeEntity createCanje(CanjeEntity canje)throws BusinessLogicException{
+        CanjeEntity c=persistence.findByOfferedBook(canje.getLibroOfrecido());
+        if(c!=null){
+            throw new BusinessLogicException("Ya existe un canje ofreciendo este libro");
+        }
+        else if (canje.getUsuarioQueOfrece().equals(canje.getUsuarioQueRecibe())){
+            throw new BusinessLogicException("Un usuario no puede ofrecerse un canje a si mismo");
+        }
+        else if(canje.getLibroOfrecido().equals(canje.getLibroPedido())){
+            throw new BusinessLogicException("No se puede ofrecer un libro en canje a cambio de si mismo");
+        }
         canje=persistence.create(canje);
         return canje;
     }
