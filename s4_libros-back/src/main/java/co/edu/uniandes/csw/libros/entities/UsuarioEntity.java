@@ -72,6 +72,41 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
         calificacion = pCalificacion;
     }
 
+    /**
+     * @return the tarjetas
+     */
+    public List<TarjetaDeCreditoEntity> getTarjetas() {
+        return tarjetas;
+    }
+
+    
+    /**
+     * @return the libros
+     */
+    public List<LibroEntity> getLibros() {
+        return libros;
+    }
+
+  
+
+    /**
+     * @return the canjesRecibidos
+     */
+    public List<CanjeEntity> getCanjesRecibidos() {
+        return canjesRecibidos;
+    }
+
+   
+
+    /**
+     * @return the canjesCreados
+     */
+    public List<CanjeEntity> getCanjesCreados() {
+        return canjesCreados;
+    }
+
+   
+
     
 
 
