@@ -38,10 +38,10 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     * @param correo the correo to set
+     * @param pCorreo the correo to set
      */
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreo(String pCorreo) {
+        correo = pCorreo;
     }
 
     /**
