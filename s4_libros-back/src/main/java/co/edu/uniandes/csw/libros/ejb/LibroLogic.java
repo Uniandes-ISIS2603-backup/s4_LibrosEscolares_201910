@@ -38,9 +38,9 @@ public class LibroLogic
 
     public LibroEntity getLibro(Long librosId) {
        
-         LibroEntity usuarioEntity = persistence.find(librosId);
-        if (usuarioEntity == null) {
+         LibroEntity libroEntity = persistence.find(librosId);
+        if (libroEntity == null) {
         }
-        return usuarioEntity;    }
+        return libroEntity;    }
     
 }

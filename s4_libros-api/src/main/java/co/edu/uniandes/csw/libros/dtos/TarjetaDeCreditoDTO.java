@@ -5,25 +5,41 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.TarjetaDeCreditoEntity;
+
 /**
  *
  * @author Miguel Muñoz
  */
 public class TarjetaDeCreditoDTO {
+    private long id;
+
+    
     private String numero;
     private String fechadevencimiento;
     private int codigodeseguridad;
 
-    /**
-     *
-     * @param numero
-     * @param fechadevencimiento
-     * @param codigodeseguridad
-     */
-    public TarjetaDeCreditoDTO(String numero, String fechadevencimiento, int codigodeseguridad) {
-        this.numero = numero;
-        this.fechadevencimiento = fechadevencimiento;
-        this.codigodeseguridad = codigodeseguridad;
+   
+    public TarjetaDeCreditoDTO() {
+       
+    }
+
+    public TarjetaDeCreditoDTO(TarjetaDeCreditoEntity nuevoTarjetaDeCreditoEntity) {
+        if(nuevoTarjetaDeCreditoEntity!=null)
+        {
+            id=nuevoTarjetaDeCreditoEntity.getId();
+            numero=nuevoTarjetaDeCreditoEntity.getNumero();
+            fechadevencimiento=nuevoTarjetaDeCreditoEntity.getFechadevencimiento();
+            codigodeseguridad=nuevoTarjetaDeCreditoEntity.getCodigodeseguridad();
+        }
+    }
+    
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
@@ -73,5 +89,15 @@ public class TarjetaDeCreditoDTO {
     public void setCodigodeseguridad(int codigodeseguridad) {
         this.codigodeseguridad = codigodeseguridad;
     }
+
+    public TarjetaDeCreditoEntity toEntity() {
+        TarjetaDeCreditoEntity entity = new TarjetaDeCreditoEntity();
+        entity.setCodigodeseguridad(codigodeseguridad);
+        entity.setFechadevencimiento(fechadevencimiento);
+        entity.setNumero(numero);
+        entity.setId(id);
+         return entity;
+    }
+  
     
 }

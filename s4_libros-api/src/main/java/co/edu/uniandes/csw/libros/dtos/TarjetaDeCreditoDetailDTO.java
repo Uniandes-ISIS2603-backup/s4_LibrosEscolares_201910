@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.TarjetaDeCreditoEntity;
 import java.io.Serializable;
 
 /**
@@ -13,9 +14,12 @@ import java.io.Serializable;
  */
 public class TarjetaDeCreditoDetailDTO extends TarjetaDeCreditoDTO implements Serializable {
 
-    public TarjetaDeCreditoDetailDTO(String numero, String fechadevencimiento, int codigodeseguridad) {
-        super(numero, fechadevencimiento, codigodeseguridad);
+    public TarjetaDeCreditoDetailDTO() {
     }
+
+    public TarjetaDeCreditoDetailDTO(TarjetaDeCreditoEntity tarjetaEntity) {
+    }
+    
 
    
     

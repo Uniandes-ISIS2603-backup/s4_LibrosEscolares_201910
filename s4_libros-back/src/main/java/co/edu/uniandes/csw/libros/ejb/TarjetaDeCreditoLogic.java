@@ -35,4 +35,15 @@ public class TarjetaDeCreditoLogic
         tarjeta= persistence.create(tarjeta);
         return tarjeta;
     }
+
+    public TarjetaDeCreditoEntity getTarjetaDeCredito(Long tarjetasId) {
+  
+         TarjetaDeCreditoEntity tarjetaEntity = persistence.find(tarjetasId);
+        if (tarjetaEntity == null) {
+        }
+        return tarjetaEntity;    }   
+
 }
+
+  
+
