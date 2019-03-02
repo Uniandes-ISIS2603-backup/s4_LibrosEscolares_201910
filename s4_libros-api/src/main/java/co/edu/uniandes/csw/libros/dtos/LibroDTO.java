@@ -15,12 +15,12 @@ import javax.swing.Icon;
  */
 public class LibroDTO implements Serializable{
     
-    private long id;
+    private Long id;
     private String ISBN;
     private String titulo;
     private String autor;
     private String editorial;
-    private int edicion;
+    private Integer edicion;
     private String estado;
     private Icon portada;
     private Double precio;

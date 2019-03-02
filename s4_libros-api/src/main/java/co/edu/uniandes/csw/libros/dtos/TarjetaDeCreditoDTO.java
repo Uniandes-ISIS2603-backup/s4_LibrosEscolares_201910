@@ -6,18 +6,19 @@
 package co.edu.uniandes.csw.libros.dtos;
 
 import co.edu.uniandes.csw.libros.entities.TarjetaDeCreditoEntity;
+import java.io.Serializable;
 
 /**
  *
  * @author Miguel Muñoz
  */
-public class TarjetaDeCreditoDTO {
-    private long id;
+public class TarjetaDeCreditoDTO implements Serializable {
+    private Long id;
 
     
     private String numero;
     private String fechadevencimiento;
-    private int codigodeseguridad;
+    private Integer codigodeseguridad;
 
    
     public TarjetaDeCreditoDTO() {

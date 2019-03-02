@@ -19,6 +19,13 @@ public class TarjetaDeCreditoDetailDTO extends TarjetaDeCreditoDTO implements Se
 
     public TarjetaDeCreditoDetailDTO(TarjetaDeCreditoEntity tarjetaEntity) {
     }
+      @Override
+    public TarjetaDeCreditoEntity toEntity()
+    {
+        TarjetaDeCreditoEntity entity = super.toEntity();
+        return entity;
+    }
+    
     
 
    
