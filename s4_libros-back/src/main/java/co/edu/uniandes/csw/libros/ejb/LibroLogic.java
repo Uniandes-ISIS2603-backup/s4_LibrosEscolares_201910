@@ -35,5 +35,12 @@ public class LibroLogic
         libro= persistence.create(libro);
         return libro;
     }
+
+    public LibroEntity getLibro(Long librosId) {
+       
+         LibroEntity usuarioEntity = persistence.find(librosId);
+        if (usuarioEntity == null) {
+        }
+        return usuarioEntity;    }
     
 }

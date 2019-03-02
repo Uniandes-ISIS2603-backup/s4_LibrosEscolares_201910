@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import java.io.Serializable;
 import javax.swing.Icon;
 
@@ -14,7 +15,7 @@ import javax.swing.Icon;
  */
 public class LibroDTO implements Serializable{
     
-    private int id;
+    private long id;
     private String ISBN;
     private String titulo;
     private String autor;
@@ -30,11 +31,27 @@ public class LibroDTO implements Serializable{
     public LibroDTO() {
     }
 
+    public LibroDTO(LibroEntity nuevoLibroEntity) {
+        if(nuevoLibroEntity!=null)
+        {
+            id=nuevoLibroEntity.getId();
+            ISBN=nuevoLibroEntity.getISBN();
+            titulo=nuevoLibroEntity.getTitulo();
+            autor=nuevoLibroEntity.getAutor();
+            editorial=nuevoLibroEntity.getEditorial();
+            edicion=nuevoLibroEntity.getEdicion();
+            estado=nuevoLibroEntity.getEstado();
+            portada=nuevoLibroEntity.getPortada();
+            precio=nuevoLibroEntity.getPrecio();
+
+        }
+    }
+
     /**
      *
      * @return
      */
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -42,7 +59,7 @@ public class LibroDTO implements Serializable{
      *
      * @param id
      */
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -173,5 +190,18 @@ public class LibroDTO implements Serializable{
     public void setPrecio(Double precio) {
         this.precio = precio;
     } 
+    
+     public LibroEntity toEntity() {
+    LibroEntity entity = new LibroEntity();
+    entity.setISBN(ISBN);
+    entity.setTitulo(titulo);
+    entity.setAutor(autor);
+    entity.setEditorial(editorial);
+    entity.setEdicion(edicion);
+    entity.setEstado(estado);
+    entity.setPortada(portada);
+    entity.setPrecio(precio);
+    return entity;
+}
     
 }

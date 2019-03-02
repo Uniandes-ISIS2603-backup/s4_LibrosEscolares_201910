@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import java.io.Serializable;
 
 /**
@@ -17,6 +18,17 @@ public class LibroDetailDTO extends LibroDTO implements Serializable{
      *
      */
     public LibroDetailDTO() {
+    }
+
+    public LibroDetailDTO(LibroEntity libroEntity) {
+        
+    }
+    
+    @Override
+    public LibroEntity toEntity()
+    {
+        LibroEntity entity = super.toEntity();
+        return entity;
     }
     
 }
