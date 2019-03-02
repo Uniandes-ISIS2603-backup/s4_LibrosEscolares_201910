@@ -8,6 +8,8 @@ package co.edu.uniandes.csw.libros.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,6 +28,13 @@ public class RespuestaEntity extends BaseEntity implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date fechaEnvio;
+    /*
+    @OneToOne(mappedBy = "respuesta", fetch = FetchType.LAZY)
+    private OrdenEntity orden;
+    
+    @OneToOne(mappedBy = "respuesta", fetch = FetchType.LAZY)
+    private CanjeEntity canje;
+    */
     
     public RespuestaEntity(){}
 

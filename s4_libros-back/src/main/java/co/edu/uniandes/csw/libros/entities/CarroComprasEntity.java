@@ -6,7 +6,12 @@
 package co.edu.uniandes.csw.libros.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -17,6 +22,13 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
     
     private Double valorPagar;
     private String  nombreU;
+    /*
+    @OneToOne(mappedBy = "carroCompras", fetch = FetchType.LAZY)
+    private UsuarioEntity comprador;
+    
+    @OneToMany(mappedBy = "carroCompras", fetch = FetchType.EAGER)
+    private List<LibroEntity> libros = new ArrayList<>();
+    */
     
     public CarroComprasEntity(){
         
