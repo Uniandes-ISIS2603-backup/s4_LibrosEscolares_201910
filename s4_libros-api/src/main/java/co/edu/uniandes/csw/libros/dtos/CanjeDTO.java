@@ -18,7 +18,7 @@ public class CanjeDTO implements Serializable {
     
     private Date fechaDeCreacion;
     
-    private EstadoDelPedidoDTO estado;
+    private String estado;
     
     private RespuestaDTO respuesta;
     
@@ -65,17 +65,17 @@ public class CanjeDTO implements Serializable {
     /**
      * @return the estado
      */
-    public EstadoDelPedidoDTO getEstado() {
+    public String getEstado() {
         return estado;
     }
 
     /**
      * @param estado the estado to set
      */
-    public void setEstado(EstadoDelPedidoDTO estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
-
+    
     /**
      * @return the respuesta
      */
@@ -145,5 +145,6 @@ public class CanjeDTO implements Serializable {
     public void setUsuarioQueRecibe(UsuarioDTO usuarioQueRecibe) {
         this.usuarioQueRecibe = usuarioQueRecibe;
     }
+    
     
 }
