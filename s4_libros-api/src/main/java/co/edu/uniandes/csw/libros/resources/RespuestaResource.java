@@ -6,8 +6,12 @@
 package co.edu.uniandes.csw.libros.resources;
 
 import co.edu.uniandes.csw.libros.dtos.RespuestaDTO;
+import co.edu.uniandes.csw.libros.ejb.RespuestaLogic;
+import co.edu.uniandes.csw.libros.entities.RespuestaEntity;
+import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -26,10 +30,16 @@ public class RespuestaResource {
     
     private static final Logger LOGGER = Logger.getLogger(RespuestaResource.class.getName());
     
+    @Inject 
+    private RespuestaLogic logica;
     
     @POST 
-    public RespuestaDTO crearRespuesta(RespuestaDTO respuesta){
-    return respuesta;
+    public RespuestaDTO crearRespuesta(RespuestaDTO respuesta) throws BusinessLogicException{
+        
+        RespuestaEntity entity = respuesta.toEntity();
+        entity = logica.crearRespuesta(entity);
+        return new RespuestaDTO(entity);
+
     }
     
     
