@@ -61,5 +61,24 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
     public void setNombreU(String nombreU) {
         this.nombreU = nombreU;
     }
+    /*
+    public void setComprador(UsuarioEntity entity){
+    comprador = entity;
+    }
+    
+    public UsuarioEntity getComprador(){
+    return comprador;
+    }
+    */
+
+
+    /*
+    public List<LibroEntity> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(List<LibroEntity> libros) {
+        this.libros = libros;
+    }*/
     
 }

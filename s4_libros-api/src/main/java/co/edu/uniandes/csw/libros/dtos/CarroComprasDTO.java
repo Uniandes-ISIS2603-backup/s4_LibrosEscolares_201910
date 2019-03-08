@@ -5,20 +5,32 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.CarroComprasEntity;
 import java.io.Serializable;
 
 /**
  *
- * @author Andres Ramirez
+ * @author Andres Ramirez, Diego Gómez
  */
 public class CarroComprasDTO implements Serializable{
     
+    private Long id;
     private Double valorPagar;
     private UsuarioDTO comprador;
     private String nombreU;
     
     public CarroComprasDTO(){
         
+    }
+    
+    public CarroComprasDTO(CarroComprasEntity entity){
+    id = entity.getId();
+    valorPagar = entity.getValorPagar();
+    
+    nombreU = entity.getNombreU();
+    
+    
+    //comprador = new UsuarioDTO(entity.getComprador);
     }
 
     /**
@@ -63,6 +75,34 @@ public class CarroComprasDTO implements Serializable{
         this.nombreU = nombreU;
     }
 
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    
+    public CarroComprasEntity toEntity(){
+    CarroComprasEntity carro = new CarroComprasEntity();
+    carro.setId(this.getId());
+    carro.setNombreU(this.nombreU);
+    carro.setValorPagar(valorPagar);
+    
+    //TODO
+    //carro.setComprador(comprador.toEntity());
+    
+    
+    
+    return carro;
+    }
     
     
     

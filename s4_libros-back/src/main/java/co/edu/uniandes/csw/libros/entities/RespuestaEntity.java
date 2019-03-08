@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -28,13 +28,10 @@ public class RespuestaEntity extends BaseEntity implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date fechaEnvio;
-    /*
-    @OneToOne(mappedBy = "respuesta", fetch = FetchType.LAZY)
-    private OrdenEntity orden;
-    
+
     @OneToOne(mappedBy = "respuesta", fetch = FetchType.LAZY)
     private CanjeEntity canje;
-    */
+    
     
     public RespuestaEntity(){}
 
@@ -92,6 +89,20 @@ public class RespuestaEntity extends BaseEntity implements Serializable {
      */
     public void setFechaEnvio(Date fechaEnvio) {
         this.fechaEnvio = fechaEnvio;
+    }
+
+    /**
+     * @return the canje
+     */
+    public CanjeEntity getCanje() {
+        return canje;
+    }
+
+    /**
+     * @param canje the canje to set
+     */
+    public void setCanje(CanjeEntity canje) {
+        this.canje = canje;
     }
     
     

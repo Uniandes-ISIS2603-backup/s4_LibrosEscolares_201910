@@ -5,15 +5,60 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.CarroComprasEntity;
+import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author Andres Ramirez
  */
-public class CarroComprasDetailDTO extends CarroComprasDTO implements Serializable{
-    
-    
-    private List<LibroDTO> libros;
+public class CarroComprasDetailDTO extends CarroComprasDTO implements Serializable {
+
+    private List<LibroDTO> libros = new ArrayList<LibroDTO>();
+
+    public CarroComprasDetailDTO() {
+    }
+
+    public CarroComprasDetailDTO(CarroComprasEntity entity) {
+
+        super(entity);
+        /*
+        if (entity.getLibros() != null) {
+            for (LibroEntity libro : entity.getLibros()) {
+                libros.add(new LibroDTO(libro));
+                
+            }
+        }
+         */
+    }
+
+    /**
+     * @return the libros
+     */
+    public List<LibroDTO> getLibros() {
+        return libros;
+    }
+
+    /**
+     * @param libros the libros to set
+     */
+    public void setLibros(List<LibroDTO> libros) {
+        this.libros = libros;
+    }
+
+    public CarroComprasEntity toEntity() {
+        CarroComprasEntity entity = super.toEntity();
+        ArrayList<LibroEntity> entidadesLibros = new ArrayList<LibroEntity>();
+        /*
+        if (!libros.isEmpty()) {
+            for(LibroDTO libro: libros){
+                entidadesLibros.add(libro.toEntity());
+            }
+            entity.setLibros(entidadesLibros);
+        }*/
+        return entity;
+    }
 }
