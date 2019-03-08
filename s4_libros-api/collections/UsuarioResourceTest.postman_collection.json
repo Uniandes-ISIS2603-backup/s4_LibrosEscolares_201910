@@ -31,7 +31,52 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"correo\": \"acom\",\n\t\"nombreUsuario\": \"test\",\n\t\"calificacion\": 3\n}"
+					"raw": "{\n\t\"correo\": \"hola\",\n\t\"nombreUsuario\": \"test\",\n\t\"calificacion\": 3\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s4_libros-api",
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear usuario con el mismo correo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5e101ce-2d43-47ca-9e09-0ee2a5b20bc5",
+						"exec": [
+							"tests[\"No crea con el mismo nombre\"] = responseCode.code === 412;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"Ya existe \");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"correo\": \"hola\",\n\t\"nombreUsuario\": \"test\",\n\t\"calificacion\": 3\n}"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios",
@@ -73,7 +118,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios{{new_id_e}}",
+					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios/{{new_id_e}}",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -82,7 +127,8 @@
 					"path": [
 						"s4_libros-api",
 						"api",
-						"usuarios{{new_id_e}}"
+						"usuarios",
+						"{{new_id_e}}"
 					]
 				}
 			},
@@ -150,7 +196,7 @@
 					"script": {
 						"id": "8901f72c-9b42-4b46-a852-bb76fd51e745",
 						"exec": [
-							"tests[\"No genera error en el Delete\"] = responseCode.code === 204;"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -222,6 +268,52 @@
 						"api",
 						"usuarios",
 						"{{new_id_e}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update 1 usuario no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db2a6b64-4a09-412d-97fe-90fd42ab2d7c",
+						"exec": [
+							"tests[\"No actualiza con id que no existe\"] = responseCode.code === 404;",
+							"tests[\"Mensaje correcto de error\"] = responseBody.has(\"El recurso\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"calificacion\": 5\n}"
+				},
+				"url": {
+					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios/4646",
+					"protocol": "http",
+					"host": [
+						"{{ip}}"
+					],
+					"port": "{{puerto}}",
+					"path": [
+						"s4_libros-api",
+						"api",
+						"usuarios",
+						"4646"
 					]
 				}
 			},
