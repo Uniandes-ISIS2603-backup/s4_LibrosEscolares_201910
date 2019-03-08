@@ -21,11 +21,11 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private String correo;
     private String nombreUsuario;
     private int calificacion; 
-    @PodamExclude
-    @OneToMany(mappedBy = "usuarioEntity")
+   // @PodamExclude
+   // @OneToMany(mappedBy = "usuarioEntity")
     private List<TarjetaDeCreditoEntity> tarjetas;
-    @PodamExclude
-    @OneToMany(mappedBy = "usuarioEntity")
+   // @PodamExclude
+   // @OneToMany(mappedBy = "usuarioEntity")
     private List<LibroEntity> libros;
     @PodamExclude
     @OneToMany(mappedBy = "usuarioQueOfrece")

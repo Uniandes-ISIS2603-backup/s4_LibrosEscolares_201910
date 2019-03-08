@@ -136,5 +136,61 @@ public class UsuarioLogicTest {
         usuarioLogic.createUsuario(newEntity);
     }
     
+     /**
+     * Prueba para consultar un Usuario.
+     */
+    @Test
+    public void getUsuarioTest() {
+        UsuarioEntity entity = data.get(0);
+        UsuarioEntity newEntity = usuarioLogic.getUsuario(entity.getId());
+        org.junit.Assert.assertNotNull(newEntity);
+        org.junit.Assert.assertEquals(entity.getNombreUsuario(), newEntity.getNombreUsuario());
+    }
     
+     /**
+     * Prueba para consultar la lista de usuarios.
+     */
+    @Test
+    public void getEditorialsTest() {
+        List<UsuarioEntity> list = usuarioLogic.getUsuarios();
+        org.junit.Assert.assertEquals(data.size(), list.size());
+        for (UsuarioEntity ent : list) {
+            boolean found = false;
+            for (UsuarioEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            org.junit.Assert.assertTrue(found);
+        }
+    }
+    
+     /**
+     * Prueba para eliminar un usuario.
+     */
+    @Test
+    public void deleteUsuarioTest() throws BusinessLogicException {
+        UsuarioEntity entity = data.get(0);
+        usuarioLogic.deleteUsuario(entity.getId());
+        UsuarioEntity deleted = em.find(UsuarioEntity.class, entity.getId());
+        org.junit.Assert.assertNull(deleted);
+    }
+
+    /**
+     * Prueba para actualizar un usuario.
+     */
+    @Test
+    public void updateUsuarioTest() {
+        UsuarioEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        usuarioLogic.updateUsuario(newEntity.getId(),newEntity);
+
+        UsuarioEntity resp = em.find(UsuarioEntity.class, entity.getId());
+
+        org.junit.Assert.assertEquals(newEntity.getNombreUsuario(), resp.getNombreUsuario());
+    }
 }
