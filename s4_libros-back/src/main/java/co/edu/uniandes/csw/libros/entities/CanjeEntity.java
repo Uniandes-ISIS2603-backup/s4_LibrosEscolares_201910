@@ -26,6 +26,8 @@ public class CanjeEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaDeCreacion;
     
+    private String estado;
+    
     @PodamExclude
     @OneToOne
     private LibroEntity libroOfrecido;
@@ -133,6 +135,20 @@ public class CanjeEntity extends BaseEntity implements Serializable {
      */
     public void setRespuesta(RespuestaEntity respuesta) {
         this.respuesta = respuesta;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
      
 }

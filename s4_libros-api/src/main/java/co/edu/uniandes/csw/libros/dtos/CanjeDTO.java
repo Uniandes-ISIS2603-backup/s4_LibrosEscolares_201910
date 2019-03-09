@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.CanjeEntity;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,7 +15,7 @@ import java.util.Date;
  */
 public class CanjeDTO implements Serializable {
     
-    private Integer id;
+    private Long id;
     
     private Date fechaDeCreacion;
     
@@ -33,18 +34,42 @@ public class CanjeDTO implements Serializable {
     
     
     public void CanjeDTO(){}
+    
+    public CanjeDTO(CanjeEntity entidad){
+        setId(entidad.getId());
+        setFechaDeCreacion(entidad.getFechaDeCreacion());
+        setEstado(entidad.getEstado());
+        setRespuesta(new RespuestaDTO(entidad.getRespuesta()));
+        setLibroOfrecido(new LibroDTO(entidad.getLibroOfrecido()));
+        setLibroPedido(new LibroDTO(entidad.getLibroPedido()));
+        setUsuarioQueOfrece(new UsuarioDTO(entidad.getUsuarioQueOfrece()));
+        setUsuarioQueRecibe(new UsuarioDTO(entidad.getUsuarioQueRecibe()));
+    }
+    
+    public CanjeEntity toEntity(){
+        CanjeEntity entidad=new CanjeEntity();
+        entidad.setId(this.getId());
+        entidad.setFechaDeCreacion(this.getFechaDeCreacion());
+        entidad.setEstado(this.getEstado());
+        entidad.setRespuesta(this.getRespuesta().toEntity());
+        entidad.setLibroOfrecido(this.getLibroOfrecido().toEntity());
+        entidad.setLibroPedido(this.getLibroPedido().toEntity());
+        entidad.setUsuarioQueOfrece(this.getUsuarioQueOfrece().toEntity());
+        entidad.setUsuarioQueRecibe(this.getUsuarioQueRecibe().toEntity());
+        return entidad;
+    }
 
     /**
      * @return the id
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
