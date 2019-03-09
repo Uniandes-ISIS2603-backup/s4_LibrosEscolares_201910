@@ -32,7 +32,8 @@ public class LibroEntity extends BaseEntity implements Serializable
      * Author Diego Gómez
      */
     public LibroEntity()
-    {}
+    {
+    }
 
     public String getISBN() {
         return ISBN;

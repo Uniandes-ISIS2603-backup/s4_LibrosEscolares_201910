@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.LibroPersistence;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -18,6 +19,8 @@ import javax.inject.Inject;
  */
 @Stateless
 public class LibroLogic {
+    
+       private static final Logger LOGGER = Logger.getLogger(LibroLogic.class.getName());
 
     @Inject
     private LibroPersistence persistence;
