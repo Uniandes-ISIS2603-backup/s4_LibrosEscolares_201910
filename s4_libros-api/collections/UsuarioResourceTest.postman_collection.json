@@ -14,7 +14,7 @@
 					"script": {
 						"id": "a82030d1-feaf-46ca-a822-abe997228973",
 						"exec": [
-							"tests[\"No genera error en el Post\"] = responseCode.code === 200;"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -31,7 +31,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"correo\": \"hola\",\n\t\"nombreUsuario\": \"test\",\n\t\"calificacion\": 3\n}"
+					"raw": "{\n\t\"correo\": \"yeah\",\n\t\"nombreUsuario\": \"test\",\n\t\"calificacion\": 3\n}"
 				},
 				"url": {
 					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios",
@@ -210,7 +210,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios/{{new_id_e}}",
+					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios/17",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -220,7 +220,7 @@
 						"s4_libros-api",
 						"api",
 						"usuarios",
-						"{{new_id_e}}"
+						"17"
 					]
 				}
 			},

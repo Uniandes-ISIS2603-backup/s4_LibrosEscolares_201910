@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -21,8 +22,8 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private String correo;
     private String nombreUsuario;
     private int calificacion; 
-   // @PodamExclude
-   // @OneToMany(mappedBy = "usuarioEntity")
+   @PodamExclude
+    @OneToMany(mappedBy = "dueno")
     private List<TarjetaDeCreditoEntity> tarjetas;
     @PodamExclude
     @OneToMany(mappedBy = "usuario")
@@ -33,6 +34,12 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "usuarioQueRecibe")
     private List<CanjeEntity> canjesCreados;
+    @PodamExclude
+    @OneToOne(mappedBy = "dueno")
+    private CarroComprasEntity carroCompras;
+  
+    
+    
    
 
     public UsuarioEntity()

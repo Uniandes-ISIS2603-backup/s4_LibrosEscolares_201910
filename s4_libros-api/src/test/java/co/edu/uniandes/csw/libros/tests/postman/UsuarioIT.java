@@ -26,11 +26,6 @@ import org.junit.runner.RunWith;
  * @author nf.jaramillo
  */
 @RunWith(Arquillian.class)
-
-/**
- *
- * @author estudiante
- */
 public class UsuarioIT {
     
     private static final String COLLECTION = "UsuarioResourceTest.postman_collection";

@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.libros.dtos;
 
 import co.edu.uniandes.csw.libros.entities.CanjeEntity;
+import co.edu.uniandes.csw.libros.entities.CarroComprasEntity;
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import co.edu.uniandes.csw.libros.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.libros.entities.UsuarioEntity;
@@ -23,8 +24,8 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
     private List<LibroDTO> libros;
     private List<CanjeDTO> canjesRecibidos;
     private List<CanjeDTO> canjesCreados;
-   //private List<OrdenDTO> ordenesCreadas;
-   // private List<OrdenDTO> ordenesRecibidas;
+     private CarroComprasEntity carroCompras;
+
     
     public UsuarioDetailDTO()
     {
@@ -91,34 +92,34 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
     public UsuarioEntity toEntity()
     {
         UsuarioEntity entidad = super.toEntity();
-        if(tarjetas !=null)
+        if(getTarjetas() !=null)
         {
             List<TarjetaDeCreditoEntity> te = new ArrayList<>();
-            for(TarjetaDeCreditoDTO dtoTarjeta: tarjetas)
+            for(TarjetaDeCreditoDTO dtoTarjeta: getTarjetas())
             {
                 //te.add(dtoTarjeta.toEntity());
             }
         }
-        if(libros !=null)
+        if(getLibros() !=null)
         {
             List<LibroEntity> le = new ArrayList<>();
-            for(LibroDTO dtoLibro: libros)
+            for(LibroDTO dtoLibro: getLibros())
             {
                 //le.add(dtoLibro.toEntity());
             }
         }
-        if(canjesRecibidos !=null)
+        if(getCanjesRecibidos() !=null)
         {
             List<CanjeEntity> ce = new ArrayList<>();
-            for(CanjeDTO dtoCanje: canjesRecibidos)
+            for(CanjeDTO dtoCanje: getCanjesRecibidos())
             {
                 //ce.add(dtoCanje.toEntity());
             }
         }
-        if(canjesCreados !=null)
+        if(getCanjesCreados() !=null)
         {
             List<CanjeEntity> ce = new ArrayList<>();
-            for(CanjeDTO dtoCanje: canjesCreados)
+            for(CanjeDTO dtoCanje: getCanjesCreados())
             {
                 //ce.add(dtoCanje.toEntity());
             }
@@ -140,6 +141,76 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
             }
         }*/
         return entidad;
+    }
+
+    /**
+     * @return the tarjetas
+     */
+    public List<TarjetaDeCreditoDTO> getTarjetas() {
+        return tarjetas;
+    }
+
+    /**
+     * @param tarjetas the tarjetas to set
+     */
+    public void setTarjetas(List<TarjetaDeCreditoDTO> tarjetas) {
+        this.tarjetas = tarjetas;
+    }
+
+    /**
+     * @return the libros
+     */
+    public List<LibroDTO> getLibros() {
+        return libros;
+    }
+
+    /**
+     * @param libros the libros to set
+     */
+    public void setLibros(List<LibroDTO> libros) {
+        this.libros = libros;
+    }
+
+    /**
+     * @return the canjesRecibidos
+     */
+    public List<CanjeDTO> getCanjesRecibidos() {
+        return canjesRecibidos;
+    }
+
+    /**
+     * @param canjesRecibidos the canjesRecibidos to set
+     */
+    public void setCanjesRecibidos(List<CanjeDTO> canjesRecibidos) {
+        this.canjesRecibidos = canjesRecibidos;
+    }
+
+    /**
+     * @return the canjesCreados
+     */
+    public List<CanjeDTO> getCanjesCreados() {
+        return canjesCreados;
+    }
+
+    /**
+     * @param canjesCreados the canjesCreados to set
+     */
+    public void setCanjesCreados(List<CanjeDTO> canjesCreados) {
+        this.canjesCreados = canjesCreados;
+    }
+
+    /**
+     * @return the carroCompras
+     */
+    public CarroComprasEntity getCarroCompras() {
+        return carroCompras;
+    }
+
+    /**
+     * @param carroCompras the carroCompras to set
+     */
+    public void setCarroCompras(CarroComprasEntity carroCompras) {
+        this.carroCompras = carroCompras;
     }
     
 }

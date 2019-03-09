@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.libros.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -18,6 +20,9 @@ public class TarjetaDeCreditoEntity extends BaseEntity implements Serializable
     private String numero;
     private String fechadevencimiento;
     private int codigodeseguridad;
+    @PodamExclude 
+    @ManyToOne
+    private UsuarioEntity dueno;
 
     public TarjetaDeCreditoEntity() {
     }

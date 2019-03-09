@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 public class UsuarioDTO implements Serializable {
 
-    private long id;
+    private Long id;
     private String correo;
     private String nombreUsuario;
     private Integer calificacion;

@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -29,6 +30,8 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
     @OneToMany(mappedBy = "carroCompras", fetch = FetchType.EAGER)
     private List<LibroEntity> libros = new ArrayList<>();
     */
+    @PodamExclude
+    private UsuarioEntity dueno;
     
     public CarroComprasEntity(){
         
