@@ -18,10 +18,11 @@ public class LibroDetailDTO extends LibroDTO implements Serializable{
      *
      */
     public LibroDetailDTO() {
+        
     }
 
     public LibroDetailDTO(LibroEntity libroEntity) {
-        
+        super();
     }
     
     @Override

@@ -20,6 +20,7 @@ public class TarjetaDeCreditoEntity extends BaseEntity implements Serializable
     private int codigodeseguridad;
 
     public TarjetaDeCreditoEntity() {
+        super();
     }
     public String getNumero() {
         return numero;
