@@ -15,11 +15,9 @@ import java.io.Serializable;
 public class TarjetaDeCreditoDetailDTO extends TarjetaDeCreditoDTO implements Serializable {
 
     public TarjetaDeCreditoDetailDTO() {
-       
     }
 
     public TarjetaDeCreditoDetailDTO(TarjetaDeCreditoEntity tarjetaEntity) {
-         super();
     }
       @Override
     public TarjetaDeCreditoEntity toEntity()
