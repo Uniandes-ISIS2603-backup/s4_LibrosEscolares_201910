@@ -10,12 +10,17 @@ import co.edu.uniandes.csw.libros.dtos.TarjetaDeCreditoDetailDTO;
 import co.edu.uniandes.csw.libros.ejb.TarjetaDeCreditoLogic;
 import co.edu.uniandes.csw.libros.entities.TarjetaDeCreditoEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -63,5 +68,46 @@ public class TarjetaDeCreditoResource {
         
         return detailDTO;
     }
+     @GET
+    public List<TarjetaDeCreditoDetailDTO> getTarjetasDeCreditos() {
+        LOGGER.info("TarjetaDeCreditoResource getTarjetaDeCreditos: input: void");
+        List<TarjetaDeCreditoDetailDTO> listaTarjetaDeCreditos = listaEntityADetailDTO(tarjetaLogic.getTarjetasDeCreditos());
+        LOGGER.log(Level.INFO, "TarjetaDeCreditoResource getTarjetaDeCreditos: output: {0}", listaTarjetaDeCreditos.toString());
+        return listaTarjetaDeCreditos;
+    }
     
+    private List<TarjetaDeCreditoDetailDTO> listaEntityADetailDTO(List<TarjetaDeCreditoEntity> entityList) {
+        List<TarjetaDeCreditoDetailDTO> list = new ArrayList<>();
+        for (TarjetaDeCreditoEntity entity : entityList) {
+            list.add(new TarjetaDeCreditoDetailDTO(entity));
+        }
+        return list;
+    }
+    
+    
+    @PUT
+    @Path("{librosId: \\d+}")
+    public TarjetaDeCreditoDetailDTO updateTarjetaDeCredito(@PathParam("librosId") Long tarjetaId, TarjetaDeCreditoDetailDTO tarjeta) throws WebApplicationException {
+        LOGGER.log(Level.INFO, "TarjetaDeCreditoResource updateTarjetaDeCredito: input: id:{0} , tarjeta: {1}", new Object[]{tarjetaId, tarjeta.toString()});
+        tarjeta.setId(tarjetaId);
+        if (tarjetaLogic.getTarjetaDeCredito(tarjetaId) == null) {
+            throw new WebApplicationException("El recurso /libros/" + tarjetaId + " no existe.", 404);
+        }
+        TarjetaDeCreditoDetailDTO detailDTO = new TarjetaDeCreditoDetailDTO(tarjetaLogic.actualizarTarjetaDeCredito(tarjeta.toEntity()));
+        LOGGER.log(Level.INFO, "TarjetaDeCreditoResource updateTarjetaDeCredito: output: {0}", detailDTO.toString());
+        return detailDTO;
+
+    }
+
+ 
+    @DELETE
+    @Path("{tarjetaId: \\d+}")
+    public void deleteTarjetaDeCredito(@PathParam("tarjetaId") Long tarjetaId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "TarjetaDeCreditoResource deleteTarjetaDeCredito: input: {0}", tarjetaId);
+        if (tarjetaLogic.getTarjetaDeCredito(tarjetaId) == null) {
+            throw new WebApplicationException("El recurso /libros/" + tarjetaId + " no existe.", 404);
+        }
+        tarjetaLogic.eliminarTarjetaDeCredito(tarjetaId);
+        LOGGER.info("TarjetaDeCreditoResource deleteTarjetaDeCredito: output: void");
+    }
 }

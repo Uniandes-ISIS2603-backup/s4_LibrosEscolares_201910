@@ -19,30 +19,39 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class TarjetaDeCreditoPersistence {
-     @PersistenceContext(unitName="librosPU")
+
+    @PersistenceContext(unitName = "librosPU")
     protected EntityManager em;
-    
-    public TarjetaDeCreditoEntity create (TarjetaDeCreditoEntity tarjetaEntity){
-        
+
+    public TarjetaDeCreditoEntity create(TarjetaDeCreditoEntity tarjetaEntity) {
+
         em.persist(tarjetaEntity);
         return tarjetaEntity;
     }
-    public TarjetaDeCreditoEntity find (Long libroId){
-  
+
+    public TarjetaDeCreditoEntity find(Long libroId) {
+
         return em.find(TarjetaDeCreditoEntity.class, libroId);
     }
-    public List<TarjetaDeCreditoEntity> findAll()
-    {
-       TypedQuery query= em.createQuery("select u from TarjetaDeCreditoEntity", TarjetaDeCreditoEntity.class);
-       return query.getResultList();
+
+    public List<TarjetaDeCreditoEntity> findAll() {
+        TypedQuery query = em.createQuery("select t from TarjetaDeCreditoEntity t", TarjetaDeCreditoEntity.class);
+        return query.getResultList();
     }
 
-    public void verificarNumero(TarjetaDeCreditoEntity tarjeta) throws BusinessLogicException
-    {
-         String c= tarjeta.getNumero();
-         if(c.length()!=12)
-             throw new BusinessLogicException("Numero no valido");
+    public void verificarNumero(TarjetaDeCreditoEntity tarjeta) throws BusinessLogicException {
+        String c = tarjeta.getNumero();
+        if (c.length() != 12) {
+            throw new BusinessLogicException("Numero no valido");
+        }
     }
-   
-    
+
+    public TarjetaDeCreditoEntity actualizar(TarjetaDeCreditoEntity entity) {
+        return em.merge(entity);
+    }
+
+    public void eliminar(Long tarjetaId) {
+        em.remove(tarjetaId);
+    }
+
 }
