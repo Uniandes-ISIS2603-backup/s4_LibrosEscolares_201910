@@ -7,7 +7,9 @@ package co.edu.uniandes.csw.libros.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.swing.Icon;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -25,7 +27,9 @@ public class LibroEntity extends BaseEntity implements Serializable
     private Icon portada;
     private Double precio;
     
-    
+    @PodamExclude
+    @OneToOne(mappedBy = "libroEntity")
+    private UsuarioEntity usuario;
     /**
      * Te agregué el contructor vacío por que me daba error al intentar desplegar
      * la aplicación. :D
