@@ -37,8 +37,7 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class LibroResource {
     
-    private static final Logger LOGGER = Logger.getLogger(LibroResource.class.getName()
-    );
+    private static final Logger LOGGER = Logger.getLogger(LibroResource.class.getName());
     
     @Inject
     LibroLogic libroLogic;
@@ -52,7 +51,7 @@ public class LibroResource {
         LibroEntity nuevoLibroEntity = libroLogic.crearLibro(libroEntity);
         LibroDTO nuevoLibroDTO = new LibroDTO(nuevoLibroEntity);
         LOGGER.info("LibroResource crearLibro: output: "+ nuevoLibroDTO.toString());
-        return libro;
+        return nuevoLibroDTO;
     }
     
       @GET

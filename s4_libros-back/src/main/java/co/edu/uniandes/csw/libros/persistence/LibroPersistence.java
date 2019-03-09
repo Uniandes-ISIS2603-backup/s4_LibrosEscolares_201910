@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.libros.persistence;
 
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +19,8 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class LibroPersistence {
+    
+     private static final Logger LOGGER = Logger.getLogger(LibroPersistence.class.getName());
 
     @PersistenceContext(unitName = "librosPU")
     protected EntityManager em;
@@ -34,7 +37,7 @@ public class LibroPersistence {
     }
 
     public List<LibroEntity> findAll() {
-        TypedQuery query = em.createQuery("select u from LibroEntity", LibroEntity.class);
+        TypedQuery<LibroEntity> query = em.createQuery("select l from LibroEntity l", LibroEntity.class);
         return query.getResultList();
     }
 
