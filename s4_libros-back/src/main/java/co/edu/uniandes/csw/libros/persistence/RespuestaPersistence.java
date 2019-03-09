@@ -18,7 +18,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class RespuestaPersistence {
-    
+
     @PersistenceContext(unitName = "librosPU")
     protected EntityManager em;
 
@@ -35,12 +35,15 @@ public class RespuestaPersistence {
         TypedQuery<RespuestaEntity> query = em.createQuery("select u from RespuestaEntity u", RespuestaEntity.class);
         return query.getResultList();
     }
-    
-    
-    public void delete(Long respuestaId){
-    RespuestaEntity entity = em.find(RespuestaEntity.class, respuestaId);
-    
-    em.remove(entity);
+
+    public void delete(Long respuestaId) {
+        RespuestaEntity entity = em.find(RespuestaEntity.class, respuestaId);
+
+        em.remove(entity);
+    }
+
+    public RespuestaEntity update(RespuestaEntity entity) {
+        return em.merge(entity);
     }
 
 }

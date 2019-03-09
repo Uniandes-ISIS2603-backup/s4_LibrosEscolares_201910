@@ -32,14 +32,18 @@ public class CarroComprasPersistence {
         return em.find(CarroComprasEntity.class, carroComprasId);
 
     }
-    
-    public List<CarroComprasEntity> findAll(){
+
+    public List<CarroComprasEntity> findAll() {
         TypedQuery<CarroComprasEntity> query = em.createQuery("select u from CarroComprasEntity u", CarroComprasEntity.class);
         return query.getResultList();
     }
-    
-    public void delete(Long carroId){
-    CarroComprasEntity carroCompras = em.find(CarroComprasEntity.class, carroId);
-    em.remove(carroCompras);
+
+    public void delete(Long carroId) {
+        CarroComprasEntity carroCompras = em.find(CarroComprasEntity.class, carroId);
+        em.remove(carroCompras);
+    }
+
+    public CarroComprasEntity update(CarroComprasEntity entity) {
+        return em.merge(entity);
     }
 }
