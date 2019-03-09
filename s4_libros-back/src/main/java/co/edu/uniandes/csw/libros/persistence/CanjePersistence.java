@@ -34,23 +34,28 @@ public class CanjePersistence {
     }
 
     public List<CanjeEntity> findAll() {
-        TypedQuery<CanjeEntity> query = em.createQuery("select u from PedidoEntity u", CanjeEntity.class);
+        TypedQuery<CanjeEntity> query = em.createQuery("select u from CanjeEntity u", CanjeEntity.class);
         return query.getResultList();
     }
 
     
-    public  CanjeEntity findByOfferedBook(LibroEntity libro)
-    {
-         List<CanjeEntity> canjes=findAll();
-         CanjeEntity canje=null;
-         for(int i=0;i<canjes.size();i++){
-             if(canjes.get(i).getLibroOfrecido().getId().equals(libro.getId())){
-                 canje=canjes.get(i);
-                 break;
-             }
-         }
-         return canje;
-    }
+    //public  CanjeEntity findByOfferedBook(LibroEntity libro)
+    //{
+      //  System.out.println("findbyofferedbook");
+        //TypedQuery query = em.createQuery("Select c From CanjeEntity c where c.libroOfrecido= :book", CanjeEntity.class);
+        //query = query.setParameter("book", libro);
+        //List<CanjeEntity> sameBook = query.getResultList();
+        
+        //CanjeEntity result;
+        //if (sameBook == null) {
+        //    result = null;
+        //} else if (sameBook.isEmpty()) {
+        //    result = null;
+        //} else {
+        //    result = sameBook.get(0);
+        //}
+        //return result;
+    //}
     
     public CanjeEntity update(CanjeEntity canjeEntity){
         return em.merge(canjeEntity);
