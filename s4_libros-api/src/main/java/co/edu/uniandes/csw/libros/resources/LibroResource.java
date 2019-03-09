@@ -10,6 +10,9 @@ import co.edu.uniandes.csw.libros.dtos.LibroDetailDTO;
 import co.edu.uniandes.csw.libros.ejb.LibroLogic;
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -34,8 +37,7 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class LibroResource {
     
-    private static final Logger LOGGER = Logger.getLogger(LibroResource.class.getName()
-    );
+    private static final Logger LOGGER = Logger.getLogger(LibroResource.class.getName());
     
     @Inject
     LibroLogic libroLogic;
@@ -49,37 +51,65 @@ public class LibroResource {
         LibroEntity nuevoLibroEntity = libroLogic.crearLibro(libroEntity);
         LibroDTO nuevoLibroDTO = new LibroDTO(nuevoLibroEntity);
         LOGGER.info("LibroResource crearLibro: output: "+ nuevoLibroDTO.toString());
-        return libro;
+        return nuevoLibroDTO;
     }
     
-     @GET
+      @GET
     @Path("{librosId: \\d+}")
     public LibroDetailDTO getLibro(@PathParam("librosId") Long librosId) throws WebApplicationException
     {
-        LibroEntity libroEntity = libroLogic.getLibro(librosId);
-        if(libroEntity == null)
+        LOGGER.log(Level.INFO, "LibroResource getLibro: input: {0}", librosId);
+        LibroEntity entidad = libroLogic.getLibro(librosId);
+        if(entidad == null)
         {
             throw new WebApplicationException("El recurso /libros/"+librosId+ " no existe.",404);
         }
-        LibroDetailDTO detailDTO = new LibroDetailDTO(libroEntity);
+        LibroDetailDTO detailDTO = new LibroDetailDTO(entidad);
+        LOGGER.log(Level.INFO, "LibroResource getLibro: output: {0}", detailDTO.toString());
         
         return detailDTO;
     }
     
-    
-    
-    
-   
-    
-    @PUT
-    public LibroDTO actualizarLibro(LibroDTO libro)
-    {
-        return libro;
+     @GET
+    public List<LibroDetailDTO> getLibros() {
+        LOGGER.info("LibroResource getLibros: input: void");
+        List<LibroDetailDTO> listaLibros = listaEntityADetailDTO(libroLogic.getLibros());
+        LOGGER.log(Level.INFO, "LibroResource getLibros: output: {0}", listaLibros.toString());
+        return listaLibros;
     }
     
+    private List<LibroDetailDTO> listaEntityADetailDTO(List<LibroEntity> entityList) {
+        List<LibroDetailDTO> list = new ArrayList<>();
+        for (LibroEntity entity : entityList) {
+            list.add(new LibroDetailDTO(entity));
+        }
+        return list;
+    }
+    
+    
+    @PUT
+    @Path("{librosId: \\d+}")
+    public LibroDetailDTO updateLibro(@PathParam("librosId") Long librosId, LibroDetailDTO libro) throws WebApplicationException {
+        LOGGER.log(Level.INFO, "LibroResource updateLibro: input: id:{0} , libro: {1}", new Object[]{librosId, libro.toString()});
+        libro.setId(librosId);
+        if (libroLogic.getLibro(librosId) == null) {
+            throw new WebApplicationException("El recurso /libros/" + librosId + " no existe.", 404);
+        }
+        LibroDetailDTO detailDTO = new LibroDetailDTO(libroLogic.actualizarLibro(libro.toEntity()));
+        LOGGER.log(Level.INFO, "LibroResource updateLibro: output: {0}", detailDTO.toString());
+        return detailDTO;
+
+    }
+
+ 
     @DELETE
-    public LibroDTO eliminarLibro(int id )
-    {
-        return null;
+    @Path("{librosId: \\d+}")
+    public void deleteLibro(@PathParam("librosId") Long librosId) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "LibroResource deleteLibro: input: {0}", librosId);
+        if (libroLogic.getLibro(librosId) == null) {
+            throw new WebApplicationException("El recurso /libros/" + librosId + " no existe.", 404);
+        }
+        libroLogic.eliminarLibro(librosId);
+        LOGGER.info("LibroResource deleteLibro: output: void");
     }
 }

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.libros.dtos;
 
+import co.edu.uniandes.csw.libros.entities.RespuestaEntity;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,31 +13,42 @@ import java.util.Date;
  *
  * @author Diego Gómez
  */
-public class RespuestaDTO implements Serializable{
-    
-    private Integer id;
-    
+public class RespuestaDTO implements Serializable {
+
+    private Long id;
+
     private String razon;
-    
+
     private Integer calificacion;
-    
+
     private String comentario;
-    
+
     private Date fechaEnvio;
 
-    public void RespuestaDTO(){}
-    
+    public RespuestaDTO(RespuestaEntity entity) {
+        if(entity!=null){
+        razon = entity.getRazon();
+        comentario = entity.getComentario();
+        calificacion = entity.getCalificacion();
+        fechaEnvio = entity.getFechaEnvio();
+        id = entity.getId();
+        }
+    }
+
+    public void RespuestaDTO() {
+    }
+
     /**
      * @return the id
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -95,7 +107,16 @@ public class RespuestaDTO implements Serializable{
     public void setFechaEnvio(Date fechaEnvio) {
         this.fechaEnvio = fechaEnvio;
     }
-    
-    
-    
+
+    public RespuestaEntity toEntity() {
+
+        RespuestaEntity respuesta = new RespuestaEntity();
+        
+        respuesta.setRazon(this.razon);
+        respuesta.setCalificacion(this.calificacion);
+        respuesta.setComentario(this.comentario);
+        respuesta.setFechaEnvio(this.fechaEnvio);
+        return respuesta;
+    }
+
 }

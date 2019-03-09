@@ -8,6 +8,8 @@ package co.edu.uniandes.csw.libros.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -19,12 +21,19 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private String correo;
     private String nombreUsuario;
     private int calificacion; 
+   // @PodamExclude
+   // @OneToMany(mappedBy = "usuarioEntity")
     private List<TarjetaDeCreditoEntity> tarjetas;
+    @PodamExclude
+    @OneToMany(mappedBy = "usuarioEntity")
     private List<LibroEntity> libros;
+    @PodamExclude
+    @OneToMany(mappedBy = "usuarioQueOfrece")
     private List<CanjeEntity> canjesRecibidos;
+    @PodamExclude
+    @OneToMany(mappedBy = "usuarioQueRecibe")
     private List<CanjeEntity> canjesCreados;
-   //private List<OrdenEntity> ordenesCreadas;
-   // private List<OrdenEntity> ordenesRecibidas;
+   
 
     public UsuarioEntity()
     {

@@ -17,18 +17,37 @@ import javax.inject.Inject;
  */
 @Stateless
 public class RespuestaLogic {
-    
+
     @Inject
     private RespuestaPersistence persistence;
-    
-    public RespuestaEntity crearRespuesta(RespuestaEntity respuesta)throws BusinessLogicException{
-        if(persistence.find(respuesta.getId())!=null){
-        throw new BusinessLogicException("Ya existe una respuesta con este id: "+respuesta.getId());
+
+    public RespuestaEntity crearRespuesta(RespuestaEntity respuesta) throws BusinessLogicException {
+        if (persistence.find(respuesta.getId()) != null) {
+            throw new BusinessLogicException("Ya existe una respuesta con este id: " + respuesta.getId());
         }
-        
-        respuesta= persistence.create(respuesta);
+        if (!respuesta.getRazon().equals("") && (respuesta.getFechaEnvio() != null || respuesta.getCalificacion() != null)) {
+            throw new BusinessLogicException("Si la razon es distinto de vacío , fecha de envio y calificacion deperían ser null.");
+        }
+
+        respuesta = persistence.create(respuesta);
         return respuesta;
     }
-     
+
+    public RespuestaEntity getRespuesta(Long id) throws BusinessLogicException {
+
+        RespuestaEntity respuesta = persistence.find(id);
+        if (respuesta != null) {
+            return respuesta;
+        } else {
+            throw new BusinessLogicException("No existe una respuesta con este id: " + id);
+        }
+    }
+
+    public RespuestaEntity updateRespuesta(RespuestaEntity entity) {
+        return persistence.update(entity);
+    }
     
+    public void deleteRespuesta(Long id){
+        persistence.delete(id);
+    }
 }
