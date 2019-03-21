@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -29,6 +30,7 @@ public class RespuestaEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaEnvio;
 
+    @PodamExclude
     @OneToOne(mappedBy = "respuesta", fetch = FetchType.LAZY)
     private CanjeEntity canje;
     

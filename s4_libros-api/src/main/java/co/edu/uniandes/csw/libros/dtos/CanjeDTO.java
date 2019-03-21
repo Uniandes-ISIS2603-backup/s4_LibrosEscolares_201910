@@ -38,7 +38,7 @@ public class CanjeDTO implements Serializable {
     public CanjeDTO(CanjeEntity entidad){
         setId(entidad.getId());
         setFechaDeCreacion(entidad.getFechaDeCreacion());
-        setEstado(entidad.getEstado());
+     setEstado(entidad.getEstado());
         setRespuesta(new RespuestaDTO(entidad.getRespuesta()));
         setLibroOfrecido(new LibroDTO(entidad.getLibroOfrecido()));
         setLibroPedido(new LibroDTO(entidad.getLibroPedido()));

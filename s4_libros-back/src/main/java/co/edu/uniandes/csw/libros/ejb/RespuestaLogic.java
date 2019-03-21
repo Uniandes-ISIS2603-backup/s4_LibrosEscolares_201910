@@ -20,15 +20,15 @@ public class RespuestaLogic {
 
     @Inject
     private RespuestaPersistence persistence;
-
     public RespuestaEntity crearRespuesta(RespuestaEntity respuesta) throws BusinessLogicException {
         if (persistence.find(respuesta.getId()) != null) {
             throw new BusinessLogicException("Ya existe una respuesta con este id: " + respuesta.getId());
         }
-        if (!respuesta.getRazon().equals("") && (respuesta.getFechaEnvio() != null || respuesta.getCalificacion() != null)) {
+        if (!respuesta.getRazon().equals("1") && (respuesta.getFechaEnvio() != null || respuesta.getCalificacion() != null)) {
             throw new BusinessLogicException("Si la razon es distinto de vacío , fecha de envio y calificacion deperían ser null.");
         }
 
+        System.out.println("Entro2");
         respuesta = persistence.create(respuesta);
         return respuesta;
     }

@@ -88,14 +88,19 @@ public class RespuestaLogicTest {
         em.createQuery("delete from RespuestaEntity").executeUpdate();
     }
 
-    //@Test
-  //  public void createRespuestaTest() throws BusinessLogicException {
-   //     RespuestaEntity newEntity = factory.manufacturePojo(RespuestaEntity.class);
-     //   RespuestaEntity result = logic.crearRespuesta(newEntity);
-       // Assert.assertNotNull(result);
-        //RespuestaEntity entity = em.find(RespuestaEntity.class, result.getId());
-       // Assert.assertEquals(newEntity.getId(), entity.getId());
-    //}
+    @Test
+    public void createRespuestaTest() throws BusinessLogicException {
+        RespuestaEntity newEntity = factory.manufacturePojo(RespuestaEntity.class);
+        if (newEntity.getCalificacion() != null && newEntity.getFechaEnvio() != null) {
+            System.out.println("Entro1");
+            newEntity.setRazon("1");
+            System.out.println("razon: " + newEntity.getRazon());
+        }
+        RespuestaEntity result = logic.crearRespuesta(newEntity);
+        Assert.assertNotNull(result);
+        RespuestaEntity entity = em.find(RespuestaEntity.class, result.getId());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+    }
 
     @Test(expected = BusinessLogicException.class)
     public void createRespuestaConMismoIdTest() throws BusinessLogicException {
@@ -104,6 +109,6 @@ public class RespuestaLogicTest {
         RespuestaEntity newEntity = factory.manufacturePojo(RespuestaEntity.class);
         newEntity.setId(data.get(0).getId());
         logic.crearRespuesta(newEntity);
-        
+
     }
 }
