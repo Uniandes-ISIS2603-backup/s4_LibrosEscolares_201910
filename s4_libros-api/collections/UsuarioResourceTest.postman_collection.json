@@ -150,6 +150,9 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [
@@ -165,7 +168,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios/",
+					"raw": "http://{{ip}}:{{puerto}}/s4_libros-api/api/usuarios",
 					"protocol": "http",
 					"host": [
 						"{{ip}}"
@@ -174,8 +177,7 @@
 					"path": [
 						"s4_libros-api",
 						"api",
-						"usuarios",
-						""
+						"usuarios"
 					],
 					"query": [
 						{
