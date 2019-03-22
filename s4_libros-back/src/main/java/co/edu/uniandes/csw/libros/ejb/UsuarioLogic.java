@@ -42,7 +42,7 @@ public class UsuarioLogic {
     
     public UsuarioEntity getUsuario(Long usuariosId){
         LOGGER.log(Level.INFO, "Inicia el proceso de consultar el usuario con id = {0}", usuariosId);
-         // Note que, por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
+         // Note que,  por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
         UsuarioEntity usuarioEntity;
         usuarioEntity = persistencia.find(usuariosId);
         if (usuarioEntity == null) {
