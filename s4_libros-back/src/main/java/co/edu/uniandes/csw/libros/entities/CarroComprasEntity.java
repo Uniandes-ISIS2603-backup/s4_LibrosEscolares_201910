@@ -16,20 +16,21 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
- * @author Andres Ramirez
+ * @author  Diego Gómez
  */
 @Entity
 public class CarroComprasEntity extends BaseEntity implements Serializable{
     
     private Double valorPagar;
     private String  nombreU;
-    /*
-    @OneToOne(mappedBy = "carroCompras", fetch = FetchType.LAZY)
-    private UsuarioEntity comprador;
     
-    @OneToMany(mappedBy = "carroCompras", fetch = FetchType.EAGER)
+    @PodamExclude
+    @OneToOne( fetch = FetchType.LAZY)
+    private UsuarioEntity comprador;
+    @PodamExclude
+    @OneToMany( fetch = FetchType.EAGER)
     private List<LibroEntity> libros = new ArrayList<>();
-    */
+    
     @PodamExclude
     private UsuarioEntity dueno;
     
@@ -64,7 +65,7 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
     public void setNombreU(String nombreU) {
         this.nombreU = nombreU;
     }
-    /*
+    
     public void setComprador(UsuarioEntity entity){
     comprador = entity;
     }
@@ -72,16 +73,16 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
     public UsuarioEntity getComprador(){
     return comprador;
     }
-    */
+    
 
 
-    /*
+    
     public List<LibroEntity> getLibros() {
         return libros;
     }
 
     public void setLibros(List<LibroEntity> libros) {
         this.libros = libros;
-    }*/
+    }
     
 }

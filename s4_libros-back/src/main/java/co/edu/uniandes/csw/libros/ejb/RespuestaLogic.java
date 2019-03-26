@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.libros.ejb;
 import co.edu.uniandes.csw.libros.entities.RespuestaEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.RespuestaPersistence;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -24,7 +25,7 @@ public class RespuestaLogic {
         if (persistence.find(respuesta.getId()) != null) {
             throw new BusinessLogicException("Ya existe una respuesta con este id: " + respuesta.getId());
         }
-        if (!respuesta.getRazon().equals("1") && (respuesta.getFechaEnvio() != null || respuesta.getCalificacion() != null)) {
+        if (!respuesta.getRazon().equals("") && (respuesta.getFechaEnvio() != null || respuesta.getCalificacion() != null)) {
             throw new BusinessLogicException("Si la razon es distinto de vacío , fecha de envio y calificacion deperían ser null.");
         }
 
@@ -49,5 +50,9 @@ public class RespuestaLogic {
     
     public void deleteRespuesta(Long id){
         persistence.delete(id);
+    }
+    
+    public List<RespuestaEntity> getRespuestas(){
+    return persistence.findAll();
     }
 }

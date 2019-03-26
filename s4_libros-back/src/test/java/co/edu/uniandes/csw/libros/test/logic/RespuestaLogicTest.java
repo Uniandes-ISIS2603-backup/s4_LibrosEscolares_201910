@@ -93,7 +93,7 @@ public class RespuestaLogicTest {
         RespuestaEntity newEntity = factory.manufacturePojo(RespuestaEntity.class);
         if (newEntity.getCalificacion() != null && newEntity.getFechaEnvio() != null) {
             System.out.println("Entro1");
-            newEntity.setRazon("1");
+            newEntity.setRazon("");
             System.out.println("razon: " + newEntity.getRazon());
         }
         RespuestaEntity result = logic.crearRespuesta(newEntity);

@@ -9,6 +9,8 @@ import co.edu.uniandes.csw.libros.dtos.RespuestaDTO;
 import co.edu.uniandes.csw.libros.ejb.RespuestaLogic;
 import co.edu.uniandes.csw.libros.entities.RespuestaEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
@@ -45,6 +47,19 @@ public class RespuestaResource {
         entity = logica.crearRespuesta(entity);
         return new RespuestaDTO(entity);
 
+    }
+    @GET
+    public List<RespuestaDTO> getRespuestas() throws WebApplicationException, BusinessLogicException {
+        List<RespuestaEntity> entidades = logica.getRespuestas();
+        if (entidades == null) {
+            throw new WebApplicationException("El recurso /respuestas"  + " no existe.", 404);
+        }
+        List<RespuestaDTO> respuesta = new ArrayList<RespuestaDTO>();
+        for(RespuestaEntity e: entidades){
+        respuesta.add(new RespuestaDTO(e));
+        }
+
+        return respuesta;
     }
 
     @GET

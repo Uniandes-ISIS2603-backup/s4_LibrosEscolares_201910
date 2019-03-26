@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.libros.ejb;
 import co.edu.uniandes.csw.libros.entities.CarroComprasEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.CarroComprasPersistence;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -45,6 +46,10 @@ public class CarroComprasLogic {
 
     public void deleteCarroCompras(Long id) {
         persistence.delete(id);
+    }
+    
+    public List<CarroComprasEntity> getCarrosCompras(){
+    return persistence.findAll();
     }
 
 }

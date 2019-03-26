@@ -35,7 +35,7 @@ public class RespuestaDTO implements Serializable {
         }
     }
 
-    public void RespuestaDTO() {
+    public RespuestaDTO() {
     }
 
     /**
@@ -111,7 +111,7 @@ public class RespuestaDTO implements Serializable {
     public RespuestaEntity toEntity() {
 
         RespuestaEntity respuesta = new RespuestaEntity();
-        
+        respuesta.setId(this.id);
         respuesta.setRazon(this.razon);
         respuesta.setCalificacion(this.calificacion);
         respuesta.setComentario(this.comentario);
