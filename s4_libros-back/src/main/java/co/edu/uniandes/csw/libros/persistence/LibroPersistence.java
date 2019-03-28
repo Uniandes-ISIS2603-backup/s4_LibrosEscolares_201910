@@ -37,7 +37,7 @@ public class LibroPersistence {
     }
 
     public List<LibroEntity> findAll() {
-        TypedQuery<LibroEntity> query = em.createQuery("select l from LibroEntity l", LibroEntity.class);
+        TypedQuery<LibroEntity> query = em.createQuery("select u from LibroEntity u", LibroEntity.class);
         return query.getResultList();
     }
 

@@ -21,7 +21,8 @@ public class LibroDetailDTO extends LibroDTO implements Serializable{
     }
 
     public LibroDetailDTO(LibroEntity libroEntity) {
-        super();
+        super(libroEntity);
+        
     }
     
     @Override
