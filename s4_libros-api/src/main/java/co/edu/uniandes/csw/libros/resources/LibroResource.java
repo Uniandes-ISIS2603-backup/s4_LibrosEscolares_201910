@@ -96,6 +96,7 @@ public class LibroResource {
             throw new WebApplicationException("El recurso /libros/" + librosId + " no existe.", 404);
         }
         LibroDetailDTO detailDTO = new LibroDetailDTO(libroLogic.actualizarLibro(libro.toEntity()));
+        libroLogic.eliminarLibro(libro.getId());
         LOGGER.log(Level.INFO, "LibroResource updateLibro: output: {0}", detailDTO.toString());
         return detailDTO;
 

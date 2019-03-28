@@ -65,14 +65,10 @@ public class LibroPersistence {
         }
 
     }
-
+    
+    
     public LibroEntity actualizar(LibroEntity libroEntity) {
-
-       
-         LibroEntity l=em.merge(libroEntity);
-         
-         eliminar(libroEntity.getId());
-         return l;
+         return em.merge(libroEntity);
     }
 
     public void eliminar(long id) {
