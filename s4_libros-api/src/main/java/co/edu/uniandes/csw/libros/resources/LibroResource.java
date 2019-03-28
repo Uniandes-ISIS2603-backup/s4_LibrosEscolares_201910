@@ -104,12 +104,14 @@ public class LibroResource {
  
     @DELETE
     @Path("{librosId: \\d+}")
-    public void deleteLibro(@PathParam("librosId") Long librosId) throws BusinessLogicException {
+    public String deleteLibro(@PathParam("librosId") Long librosId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "LibroResource deleteLibro: input: {0}", librosId);
-        if (libroLogic.getLibro(librosId) == null) {
+       LibroEntity libro= libroLogic.getLibro(librosId);
+        if (libro == null) {
             throw new WebApplicationException("El recurso /libros/" + librosId + " no existe.", 404);
         }
         libroLogic.eliminarLibro(librosId);
         LOGGER.info("LibroResource deleteLibro: output: void");
+         return "El libro con Id: "+libro.getId()+" y nombre: "+ libro.getTitulo()+" fue eliminado.";
     }
 }
