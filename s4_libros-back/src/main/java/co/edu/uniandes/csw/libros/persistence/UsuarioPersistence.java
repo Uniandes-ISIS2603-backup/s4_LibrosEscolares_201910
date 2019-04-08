@@ -28,12 +28,18 @@ public class UsuarioPersistence {
 
     public UsuarioEntity create(UsuarioEntity ue) {
         ue.crearCarro();
+         LOGGER.log(Level.INFO, "BBBBBBBBBBBBB:  "+ue.getCarro());
         em.persist(ue);
+        
+        
         return ue;
     }
 
     public UsuarioEntity find(Long id) {
-        return em.find(UsuarioEntity.class, id);
+         
+         UsuarioEntity c = em.find(UsuarioEntity.class, id);
+         LOGGER.log(Level.INFO, "CCCCCCCCCCCCCCC:  "+c.getCarro());
+        return c;
     }
     
     public List<UsuarioEntity> findAll()

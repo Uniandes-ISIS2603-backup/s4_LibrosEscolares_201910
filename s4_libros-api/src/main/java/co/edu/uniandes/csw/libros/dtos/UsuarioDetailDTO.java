@@ -86,6 +86,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
                   //  ordenesRecibidas.add(new OrdenDTO(oe));
                 }
             }*/
+            carroCompras = entity.getCarro();
         }
     }
     @Override
@@ -97,7 +98,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
             List<TarjetaDeCreditoEntity> te = new ArrayList<>();
             for(TarjetaDeCreditoDTO dtoTarjeta: getTarjetas())
             {
-                //te.add(dtoTarjeta.toEntity());
+                te.add(dtoTarjeta.toEntity());
             }
         }
         if(getLibros() !=null)
@@ -105,7 +106,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
             List<LibroEntity> le = new ArrayList<>();
             for(LibroDTO dtoLibro: getLibros())
             {
-                //le.add(dtoLibro.toEntity());
+                le.add(dtoLibro.toEntity());
             }
         }
         if(getCanjesRecibidos() !=null)
@@ -113,7 +114,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
             List<CanjeEntity> ce = new ArrayList<>();
             for(CanjeDTO dtoCanje: getCanjesRecibidos())
             {
-                //ce.add(dtoCanje.toEntity());
+                ce.add(dtoCanje.toEntity());
             }
         }
         if(getCanjesCreados() !=null)
@@ -121,7 +122,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
             List<CanjeEntity> ce = new ArrayList<>();
             for(CanjeDTO dtoCanje: getCanjesCreados())
             {
-                //ce.add(dtoCanje.toEntity());
+                ce.add(dtoCanje.toEntity());
             }
         }/*
         if(ordenesCreadas !=null)
@@ -129,7 +130,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
             List<OrdenEntity> oe = new ArrayList<>();
             for(OrdenDTO dtoOrden: ordenesCreadas)
             {
-                //oe.add(dtoOrden.toEntity());
+                oe.add(dtoOrden.toEntity());
             }
         }
         if(ordenesRecibidas !=null)
@@ -140,6 +141,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
                 //oe.add(dtoOrden.toEntity());
             }
         }*/
+        entidad.setCarro(carroCompras);
         return entidad;
     }
 

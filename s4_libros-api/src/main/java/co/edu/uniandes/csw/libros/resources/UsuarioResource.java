@@ -44,6 +44,7 @@ public class UsuarioResource {
     @POST
     public UsuarioDTO crearUsuario(UsuarioDTO usuario) throws BusinessLogicException
     {
+        
         UsuarioEntity ue = usuario.toEntity();
         ue = logica.createUsuario(ue);
         return new UsuarioDTO(ue);
@@ -66,7 +67,7 @@ public class UsuarioResource {
         }
         UsuarioDetailDTO detailDTO = new UsuarioDetailDTO(entidad);
         LOGGER.log(Level.INFO, "UsuarioResource getUsuario: output: {0}", detailDTO.toString());
-        
+         //LOGGER.log(Level.INFO, "AAAAAAAAAAAAAAAAAA:  "+detailDTO.getCarroCompras().getId());
         return detailDTO;
     }
     

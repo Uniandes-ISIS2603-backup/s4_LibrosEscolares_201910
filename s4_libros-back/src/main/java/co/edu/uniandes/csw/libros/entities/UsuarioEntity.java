@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.libros.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -35,7 +36,8 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "usuarioQueRecibe")
     private List<CanjeEntity> canjesCreados;
     @PodamExclude
-    @OneToOne(mappedBy = "dueno")
+    
+    @OneToOne(mappedBy = "dueno",cascade = CascadeType.ALL)
     private CarroComprasEntity carroCompras;
   
     
@@ -125,6 +127,15 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
        carroCompras = new CarroComprasEntity();
    }
 
+   public CarroComprasEntity getCarro()
+   {
+       return carroCompras;
+   }
+   
+   public void setCarro(CarroComprasEntity pCC)
+   {
+       carroCompras = pCC;
+   }
     
 
 
