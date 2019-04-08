@@ -121,7 +121,9 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
         return canjesCreados;
     }
 
-   
+   public void crearCarro(){
+       carroCompras = new CarroComprasEntity();
+   }
 
     
 

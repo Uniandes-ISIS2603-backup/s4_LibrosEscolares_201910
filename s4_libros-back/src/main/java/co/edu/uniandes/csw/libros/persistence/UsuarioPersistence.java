@@ -27,6 +27,7 @@ public class UsuarioPersistence {
     protected EntityManager em;
 
     public UsuarioEntity create(UsuarioEntity ue) {
+        ue.crearCarro();
         em.persist(ue);
         return ue;
     }
