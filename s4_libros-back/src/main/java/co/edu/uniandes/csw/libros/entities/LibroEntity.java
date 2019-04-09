@@ -25,7 +25,7 @@ public class LibroEntity extends BaseEntity implements Serializable
     private String editorial;
     private int edicion;
     private String estado;
-    private Icon portada;
+    private String portada;
     private Double precio;
     
     @PodamExclude
@@ -88,11 +88,11 @@ public class LibroEntity extends BaseEntity implements Serializable
         this.estado = estado;
     }
 
-    public Icon getPortada() {
+    public String getPortada() {
         return portada;
     }
 
-    public void setPortada(Icon portada) {
+    public void setPortada(String portada) {
         this.portada = portada;
     }
 

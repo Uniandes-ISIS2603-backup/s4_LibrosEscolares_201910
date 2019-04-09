@@ -22,7 +22,7 @@ public class LibroDTO implements Serializable{
     private String editorial;
     private Integer edicion;
     private String estado;
-    private Icon portada;
+    private String portada;
     private Double precio;
 
     /**
@@ -163,7 +163,7 @@ public class LibroDTO implements Serializable{
      *
      * @return
      */
-    public Icon getPortada() {
+    public String getPortada() {
         return portada;
     }
 
@@ -171,7 +171,7 @@ public class LibroDTO implements Serializable{
      *
      * @param portada
      */
-    public void setPortada(Icon portada) {
+    public void setPortada(String portada) {
         this.portada = portada;
     }
 
