@@ -30,7 +30,7 @@ public class CarroComprasDTO implements Serializable{
     nombreU = entity.getNombreU();
     
     
-    //comprador = new UsuarioDTO(entity.getComprador);
+    comprador = new UsuarioDTO(entity.getComprador());
     }
 
     /**
@@ -97,7 +97,7 @@ public class CarroComprasDTO implements Serializable{
     carro.setValorPagar(valorPagar);
     
     //TODO
-    //carro.setComprador(comprador.toEntity());
+    carro.setComprador(comprador.toEntity());
     
     
     

@@ -8,8 +8,10 @@ package co.edu.uniandes.csw.libros.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -28,7 +30,7 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
     @OneToOne( fetch = FetchType.LAZY)
     private UsuarioEntity comprador;
     @PodamExclude
-    @OneToMany( fetch = FetchType.EAGER)
+    @ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<LibroEntity> libros = new ArrayList<>();
     
     @PodamExclude

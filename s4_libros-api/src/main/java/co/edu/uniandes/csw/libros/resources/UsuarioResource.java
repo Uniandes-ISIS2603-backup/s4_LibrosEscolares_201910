@@ -46,6 +46,7 @@ public class UsuarioResource {
     {
         
         UsuarioEntity ue = usuario.toEntity();
+        ue.crearCarro();
         ue = logica.createUsuario(ue);
         return new UsuarioDTO(ue);
     }
@@ -134,5 +135,6 @@ public class UsuarioResource {
         logica.deleteUsuario(usuariosId);
         LOGGER.info("UsuarioResource deleteUsuario: output: void");
     }
+
 }
 
