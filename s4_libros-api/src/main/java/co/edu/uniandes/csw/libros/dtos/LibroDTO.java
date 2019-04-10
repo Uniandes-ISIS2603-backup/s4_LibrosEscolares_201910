@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.libros.dtos;
 
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import java.io.Serializable;
-import javax.swing.Icon;
 
 /**
  *
