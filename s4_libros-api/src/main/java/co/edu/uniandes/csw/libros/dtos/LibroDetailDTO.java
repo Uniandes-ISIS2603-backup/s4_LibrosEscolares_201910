@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.libros.dtos;
 
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
+import co.edu.uniandes.csw.libros.entities.UsuarioEntity;
 import java.io.Serializable;
 
 /**
@@ -14,6 +15,7 @@ import java.io.Serializable;
  */
 public class LibroDetailDTO extends LibroDTO implements Serializable{
 
+    private UsuarioEntity duenio;
     /**
      *
      */
@@ -22,6 +24,7 @@ public class LibroDetailDTO extends LibroDTO implements Serializable{
 
     public LibroDetailDTO(LibroEntity libroEntity) {
         super(libroEntity);
+        duenio=libroEntity.getUsuario();
         
     }
     

@@ -47,6 +47,14 @@ public class LibroEntity extends BaseEntity implements Serializable
         this.ISBN = ISBN;
     }
 
+    public UsuarioEntity getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
+    }
+
     public String getTitulo() {
         return titulo;
     }
