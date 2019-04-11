@@ -10,7 +10,9 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,7 +46,7 @@ public class CanjeEntity extends BaseEntity implements Serializable {
     private UsuarioEntity usuarioQueOfrece;
     
     @PodamExclude
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private UsuarioEntity usuarioQueRecibe;
     
     @PodamExclude

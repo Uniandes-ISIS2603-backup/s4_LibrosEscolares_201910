@@ -39,7 +39,7 @@ public class CanjeDTO implements Serializable {
         setId(entidad.getId());
         setFechaDeCreacion(entidad.getFechaDeCreacion());
      setEstado(entidad.getEstado());
-        setRespuesta(new RespuestaDTO(entidad.getRespuesta()));
+       // setRespuesta(new RespuestaDTO(entidad.getRespuesta()));
         setLibroOfrecido(new LibroDTO(entidad.getLibroOfrecido()));
         setLibroPedido(new LibroDTO(entidad.getLibroPedido()));
         setUsuarioQueOfrece(new UsuarioDTO(entidad.getUsuarioQueOfrece()));
@@ -112,7 +112,9 @@ public class CanjeDTO implements Serializable {
      * @param respuesta the respuesta to set
      */
     public void setRespuesta(RespuestaDTO respuesta) {
+        if(respuesta!=null){
         this.respuesta = respuesta;
+        }
     }
 
     /**

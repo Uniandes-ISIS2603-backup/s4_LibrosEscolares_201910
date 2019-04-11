@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.libros.entities.CanjeEntity;
 import co.edu.uniandes.csw.libros.entities.RespuestaEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.CanjePersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
@@ -35,14 +36,6 @@ public class CanjeLogic {
 //        else if(canje.getLibroOfrecido().getId()==canje.getLibroPedido().getId()){
 //            throw new BusinessLogicException("No se puede ofrecer un libro en canje a cambio de si mismo");
 //        }
-        RespuestaEntity respuesta = new RespuestaEntity();
-        respuesta.setId(canje.getId());
-        respuesta.setComentario("");
-        respuesta.setCalificacion(null);
-        respuesta.setRazon("-");
-        respuesta.setFechaEnvio(null);
-        canje.setRespuesta(respuesta);
-        persistence.create(canje);
         return canje;
     }
 
@@ -68,4 +61,25 @@ public class CanjeLogic {
         persistence.delete(canjeId);
     }
 
+    public List<CanjeEntity> findOfrecidos(Long idUser) {
+        List<CanjeEntity> lista = persistence.findAll();
+        List<CanjeEntity> retorno = new ArrayList<CanjeEntity>();
+        for (CanjeEntity canje : lista) {
+            if (canje.getUsuarioQueOfrece().getId() == idUser) {
+                retorno.add(canje);
+            }
+        }
+        return retorno;
+    }
+
+    public List<CanjeEntity> findRecibido(Long idUser) {
+        List<CanjeEntity> lista = persistence.findAll();
+        List<CanjeEntity> retorno = new ArrayList<CanjeEntity>();
+        for (CanjeEntity canje : lista) {
+            if (canje.getUsuarioQueRecibe().getId() == idUser) {
+                retorno.add(canje);
+            }
+        }
+        return retorno;
+    }
 }
