@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.libros.ejb;
 
 import co.edu.uniandes.csw.libros.entities.CanjeEntity;
+import co.edu.uniandes.csw.libros.entities.RespuestaEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.CanjePersistence;
 import java.util.List;
@@ -19,46 +20,52 @@ import javax.inject.Inject;
  *
  * @author William Smith
  */
-
 @Stateless
 public class CanjeLogic {
-    
+
     private static final Logger LOGGER = Logger.getLogger(CanjeLogic.class.getName());
-    
+
     @Inject
     private CanjePersistence persistence;
-    
-    public CanjeEntity createCanje(CanjeEntity canje)throws BusinessLogicException{
+
+    public CanjeEntity createCanje(CanjeEntity canje) throws BusinessLogicException {
 //        if (canje.getUsuarioQueOfrece().getId()==canje.getUsuarioQueRecibe().getId()){
 //            throw new BusinessLogicException("Un usuario no puede ofrecerse un canje a si mismo");
 //        }
 //        else if(canje.getLibroOfrecido().getId()==canje.getLibroPedido().getId()){
 //            throw new BusinessLogicException("No se puede ofrecer un libro en canje a cambio de si mismo");
 //        }
+        RespuestaEntity respuesta = new RespuestaEntity();
+        respuesta.setId(canje.getId());
+        respuesta.setComentario("");
+        respuesta.setCalificacion(null);
+        respuesta.setRazon("-");
+        respuesta.setFechaEnvio(null);
+        canje.setRespuesta(respuesta);
         persistence.create(canje);
         return canje;
     }
-    
-    public CanjeEntity findCanje(Long canjeId){
-        CanjeEntity canjeEntity=persistence.find(canjeId);
-        if(canjeEntity==null){
+
+    public CanjeEntity findCanje(Long canjeId) {
+        CanjeEntity canjeEntity = persistence.find(canjeId);
+        if (canjeEntity == null) {
             LOGGER.log(Level.SEVERE, "El canje con el id = {0} no existe", canjeId);
         }
         return canjeEntity;
     }
-    
-    public List<CanjeEntity> findCanjes(){
-        List<CanjeEntity> lista=persistence.findAll();
+
+    public List<CanjeEntity> findCanjes() {
+        List<CanjeEntity> lista = persistence.findAll();
         return lista;
     }
-    
-    public CanjeEntity updateCanje(Long canjeId, CanjeEntity canjeEntity){
-        CanjeEntity newCanjeEntity=persistence.update(canjeEntity);
+
+    public CanjeEntity updateCanje(Long canjeId, CanjeEntity canjeEntity) {
+        CanjeEntity newCanjeEntity = persistence.update(canjeEntity);
         return newCanjeEntity;
     }
-    
-    public void deleteCanje(Long canjeId){
+
+    public void deleteCanje(Long canjeId) {
         persistence.delete(canjeId);
     }
-    
+
 }
