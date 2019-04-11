@@ -16,43 +16,40 @@ import javax.inject.Inject;
 import java.util.logging.Logger;
 
 /**
- *      
+ *
  * @author nf.jaramillo
  */
-
 @Stateless
 public class UsuarioLogic {
-    
+
     private static final Logger LOGGER = Logger.getLogger(UsuarioLogic.class.getName());
 
-    
     @Inject
     private UsuarioPersistence persistencia;
-    
-    public UsuarioEntity createUsuario(UsuarioEntity usuario) throws BusinessLogicException{
-        
-        if(persistencia.findByName(usuario.getCorreo()) != null)
-        {
+
+    public UsuarioEntity createUsuario(UsuarioEntity usuario) throws BusinessLogicException {
+
+        if (persistencia.findByName(usuario.getCorreo()) != null) {
             throw new BusinessLogicException("Ya existe un usuario con ese correo");
         }
-        
+
         usuario = persistencia.create(usuario);
         return usuario;
     }
-    
-    public UsuarioEntity getUsuario(Long usuariosId){
+
+    public UsuarioEntity getUsuario(Long usuariosId) {
         LOGGER.log(Level.INFO, "Inicia el proceso de consultar el usuario con id = {0}", usuariosId);
-         // Note que,  por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
+        // Note que,  por medio de la inyección de dependencias se llama al método "find(id)" que se encuentra en la persistencia.
         UsuarioEntity usuarioEntity;
         usuarioEntity = persistencia.find(usuariosId);
         if (usuarioEntity == null) {
             LOGGER.log(Level.SEVERE, "El usuario con el id = {0} no existe", usuariosId);
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar el usuario con id = {0}", usuariosId);
-         LOGGER.log(Level.INFO, "AAAAAAAAAAAAAAAAAA:  "+ usuarioEntity.getCarro());
+        LOGGER.log(Level.INFO, "AAAAAAAAAAAAAAAAAA:  " + usuarioEntity.getCarro());
         return usuarioEntity;
     }
-    
+
     /**
      *
      * Obtener todas las editoriales existentes en la base de datos.
@@ -66,15 +63,14 @@ public class UsuarioLogic {
         LOGGER.log(Level.INFO, "Termina proceso de consultar todos los usuarios");
         return usuarios;
     }
-    
+
     /**
      *
      * Actualizar un usuario.
      *
-     * @param usuarioId: id del usuario para buscarla en la base de
-     * datos.
-     * @param UsuarioEntity: usuario con los cambios para ser actualizada,
-     * por ejemplo el nombre.
+     * @param usuarioId: id del usuario para buscarla en la base de datos.
+     * @param UsuarioEntity: usuario con los cambios para ser actualizada, por
+     * ejemplo el nombre.
      * @return el usuario con los cambios actualizados en la base de datos.
      */
     public UsuarioEntity updateUsuario(Long usuarioId, UsuarioEntity usuarioEntity) {
@@ -100,5 +96,9 @@ public class UsuarioLogic {
         }
         persistencia.delete(usuariosId);
         LOGGER.log(Level.INFO, "Termina proceso de borrar el usuario con id = {0}", usuariosId);
+    }
+
+    public UsuarioEntity findByMail(String mail) {
+        return persistencia.findByMail(mail);
     }
 }

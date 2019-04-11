@@ -9,10 +9,14 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -42,11 +46,11 @@ public class CanjeEntity extends BaseEntity implements Serializable {
     private UsuarioEntity usuarioQueOfrece;
     
     @PodamExclude
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private UsuarioEntity usuarioQueRecibe;
     
     @PodamExclude
-    @OneToOne
+    @OneToOne(cascade= CascadeType.PERSIST)
     private RespuestaEntity respuesta;
 
     public CanjeEntity(){

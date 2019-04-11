@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.libros.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -125,6 +126,11 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
 
    public void crearCarro(){
        carroCompras = new CarroComprasEntity();
+       carroCompras.setId(this.getId());
+       carroCompras.setComprador(this);
+       carroCompras.setValorPagar(0.0);
+       carroCompras.setNombreU(this.nombreUsuario);
+       carroCompras.setLibros(new ArrayList<LibroEntity>());
    }
 
    public CarroComprasEntity getCarro()
