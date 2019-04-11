@@ -42,9 +42,15 @@ public class CanjeResource {
     private static final Logger LOGGER = Logger.getLogger(CanjeResource.class.getName());
         
         @POST
-        public CanjeDTO crearCanje(CanjeDTO canje)throws BusinessLogicException{
+        public CanjeDTO crearCanje(CanjeDTO canje){
             CanjeEntity canjeEntity=canje.toEntity();
+            System.out.println("entro");
+        try {
             canjeEntity=logica.createCanje(canjeEntity);
+            
+        } catch (BusinessLogicException ex) {
+            throw new WebApplicationException("el recurso /canjes/no existe."+ex.toString(),404);
+        }
             return new CanjeDTO(canjeEntity);
         }
         
@@ -56,6 +62,33 @@ public class CanjeResource {
                 throw new WebApplicationException("el recurso /canjes/"+canjesId+"no existe.",404);
             }
             return new CanjeDTO(entidad);
+        }
+        
+        @GET
+        @Path("/ofrecidos/{userId}")
+        public List<CanjeDTO> getCanjesOfrecidos(@PathParam("userId") Long canjesId){
+            List<CanjeEntity> entidades = logica.findOfrecidos(canjesId);
+            List<CanjeDTO> canjes = new ArrayList<CanjeDTO>();
+            if(entidades==null){
+                throw new WebApplicationException("el recurso /canjes/"+canjesId+"no existe.",404);
+            }
+            for(CanjeEntity canje: entidades){
+            canjes.add(new CanjeDTO(canje));
+            }
+            return canjes;
+        }
+        @GET
+        @Path("/recibidos/{userId}")
+        public List<CanjeDTO> getCanjesRecibidos(@PathParam("userId") Long canjesId){
+            List<CanjeEntity> entidades = logica.findRecibido(canjesId);
+            List<CanjeDTO> canjes = new ArrayList<CanjeDTO>();
+            if(entidades==null){
+                throw new WebApplicationException("el recurso /canjes/"+canjesId+"no existe.",404);
+            }
+            for(CanjeEntity canje: entidades){
+            canjes.add(new CanjeDTO(canje));
+            }
+            return canjes;
         }
         
         @GET

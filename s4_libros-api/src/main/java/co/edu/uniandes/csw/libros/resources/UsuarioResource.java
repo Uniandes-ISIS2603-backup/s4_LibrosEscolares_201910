@@ -135,6 +135,22 @@ public class UsuarioResource {
         logica.deleteUsuario(usuariosId);
         LOGGER.info("UsuarioResource deleteUsuario: output: void");
     }
+    
+        @GET
+    @Path("/mail/{mail}")
+    public UsuarioDetailDTO getUsuario(@PathParam("mail") String correo) throws WebApplicationException
+    {
+        LOGGER.log(Level.INFO, "UsuarioResource getUsuario: input: {0}", correo);
+        UsuarioEntity entidad = logica.findByMail(correo);
+        if(entidad == null)
+        {
+            throw new WebApplicationException("El recurso /usuarios/mail/"+correo+ " no existe.",404);
+        }
+        UsuarioDetailDTO detailDTO = new UsuarioDetailDTO(entidad);
+        LOGGER.log(Level.INFO, "UsuarioResource getUsuario: output: {0}", detailDTO.toString());
+         //LOGGER.log(Level.INFO, "AAAAAAAAAAAAAAAAAA:  "+detailDTO.getCarroCompras().getId());
+        return detailDTO;
+    }
 
 }
 
