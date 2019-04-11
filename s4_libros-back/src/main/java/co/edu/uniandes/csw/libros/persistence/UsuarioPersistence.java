@@ -27,7 +27,7 @@ public class UsuarioPersistence {
     protected EntityManager em;
 
     public UsuarioEntity create(UsuarioEntity ue) {
-        ue.crearCarro();
+        //ue.crearCarro();
          LOGGER.log(Level.INFO, "BBBBBBBBBBBBB:  "+ue.getCarro());
         em.persist(ue);
         
