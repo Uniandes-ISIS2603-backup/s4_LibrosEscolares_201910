@@ -23,7 +23,7 @@ public class LibroDTO implements Serializable{
     private String estado;
     private String portada;
     private Double precio;
-
+      private UsuarioDTO duenio;
     /**
      *
      */
@@ -42,6 +42,7 @@ public class LibroDTO implements Serializable{
             estado=nuevoLibroEntity.getEstado();
             portada=nuevoLibroEntity.getPortada();
             precio=nuevoLibroEntity.getPrecio();
+        //    duenio=new UsuarioDTO(nuevoLibroEntity.getUsuario());
 
         }
     }
@@ -189,6 +190,15 @@ public class LibroDTO implements Serializable{
     public void setPrecio(Double precio) {
         this.precio = precio;
     } 
+
+    public UsuarioDTO getDuenio() {
+        return duenio;
+    }
+
+    public void setDuenio(UsuarioDTO duenio) {
+        this.duenio = duenio;
+    }
+    
     
      public LibroEntity toEntity() {
     LibroEntity entity = new LibroEntity();
@@ -200,6 +210,7 @@ public class LibroDTO implements Serializable{
     entity.setEstado(estado);
     entity.setPortada(portada);
     entity.setPrecio(precio);
+    entity.setUsuario(duenio.toEntity());
     return entity;
 }
     

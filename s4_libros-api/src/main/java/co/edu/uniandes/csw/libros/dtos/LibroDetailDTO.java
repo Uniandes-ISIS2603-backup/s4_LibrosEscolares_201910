@@ -16,6 +16,8 @@ import java.io.Serializable;
 public class LibroDetailDTO extends LibroDTO implements Serializable{
 
     private UsuarioEntity duenio;
+
+   
     /**
      *
      */
@@ -24,10 +26,10 @@ public class LibroDetailDTO extends LibroDTO implements Serializable{
 
     public LibroDetailDTO(LibroEntity libroEntity) {
         super(libroEntity);
-        duenio=libroEntity.getUsuario();
+       
         
     }
-    
+     
     @Override
     public LibroEntity toEntity()
     {
