@@ -48,6 +48,7 @@ public class LibroResource {
     {
         LOGGER.info("LibroResource crearLibro: input: "+ libro.toString());
         LibroEntity libroEntity = libro.toEntity();
+        LOGGER.info("LibroResource crearLibro:  "+ libroEntity.toString());
         LibroEntity nuevoLibroEntity = libroLogic.crearLibro(libroEntity);
         LibroDTO nuevoLibroDTO = new LibroDTO(nuevoLibroEntity);
         LOGGER.info("LibroResource crearLibro: output: "+ nuevoLibroDTO.toString());

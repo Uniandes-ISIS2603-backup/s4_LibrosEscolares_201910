@@ -76,6 +76,9 @@ public class UsuarioLogic {
     public UsuarioEntity updateUsuario(Long usuarioId, UsuarioEntity usuarioEntity) {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar el usuario con id = {0}", usuarioId);
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
+        if(!usuarioEntity.getCanjesCreados().isEmpty()){
+        LOGGER.log(Level.INFO, "Canje con id: "+ usuarioEntity.getCanjesCreados().get(0).getId());
+        }
         UsuarioEntity newEntity = persistencia.update(usuarioEntity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar el usuario con id = {0}", usuarioEntity.getId());
         return newEntity;

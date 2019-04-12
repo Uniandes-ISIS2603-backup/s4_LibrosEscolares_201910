@@ -31,10 +31,10 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private List<LibroEntity> libros;
     @PodamExclude
-    @OneToMany(mappedBy = "usuarioQueOfrece")
+    @OneToMany(mappedBy = "usuarioQueOfrece", cascade = CascadeType.ALL)
     private List<CanjeEntity> canjesRecibidos;
     @PodamExclude
-    @OneToMany(mappedBy = "usuarioQueRecibe")
+    @OneToMany(mappedBy = "usuarioQueRecibe", cascade = CascadeType.ALL)
     private List<CanjeEntity> canjesCreados;
     @PodamExclude
     
@@ -142,6 +142,26 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
    {
        carroCompras = pCC;
    }
+
+    public void setTarjetas(List<TarjetaDeCreditoEntity> tarjetas) {
+        this.tarjetas = tarjetas;
+    }
+
+    public void setLibros(List<LibroEntity> libros) {
+        this.libros = libros;
+    }
+
+    public void setCanjesRecibidos(List<CanjeEntity> canjesRecibidos) {
+        this.canjesRecibidos = canjesRecibidos;
+    }
+
+    public void setCanjesCreados(List<CanjeEntity> canjesCreados) {
+        this.canjesCreados = canjesCreados;
+    }
+
+    public void setCarroCompras(CarroComprasEntity carroCompras) {
+        this.carroCompras = carroCompras;
+    }
     
 
 

@@ -42,13 +42,13 @@ public class UsuarioResource {
     private UsuarioLogic logica;
     
     @POST
-    public UsuarioDTO crearUsuario(UsuarioDTO usuario) throws BusinessLogicException
+    public UsuarioDetailDTO crearUsuario(UsuarioDetailDTO usuario) throws BusinessLogicException
     {
         
         UsuarioEntity ue = usuario.toEntity();
-        ue.crearCarro();
+        //ue.crearCarro();
         ue = logica.createUsuario(ue);
-        return new UsuarioDTO(ue);
+        return new UsuarioDetailDTO(ue);
     }
 
     /**

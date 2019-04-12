@@ -6,14 +6,16 @@
 package co.edu.uniandes.csw.libros.dtos;
 
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
+import co.edu.uniandes.csw.libros.resources.LibroResource;
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Miguel Muñoz
  */
-public class LibroDTO implements Serializable{
-    
+public class LibroDTO implements Serializable {
+
     private Long id;
     private String ISBN;
     private String titulo;
@@ -23,7 +25,10 @@ public class LibroDTO implements Serializable{
     private String estado;
     private String portada;
     private Double precio;
-      private UsuarioDTO duenio;
+    private UsuarioDTO duenio;
+
+    private static final Logger LOGGER = Logger.getLogger(LibroDTO.class.getName());
+
     /**
      *
      */
@@ -31,19 +36,19 @@ public class LibroDTO implements Serializable{
     }
 
     public LibroDTO(LibroEntity nuevoLibroEntity) {
-        if(nuevoLibroEntity!=null)
-        {
-            id=nuevoLibroEntity.getId();
-            ISBN=nuevoLibroEntity.getISBN();
-            titulo=nuevoLibroEntity.getTitulo();
-            autor=nuevoLibroEntity.getAutor();
-            editorial=nuevoLibroEntity.getEditorial();
-            edicion=nuevoLibroEntity.getEdicion();
-            estado=nuevoLibroEntity.getEstado();
-            portada=nuevoLibroEntity.getPortada();
-            precio=nuevoLibroEntity.getPrecio();
-        //    duenio=new UsuarioDTO(nuevoLibroEntity.getUsuario());
-
+        if (nuevoLibroEntity != null) {
+            id = nuevoLibroEntity.getId();
+            ISBN = nuevoLibroEntity.getISBN();
+            titulo = nuevoLibroEntity.getTitulo();
+            autor = nuevoLibroEntity.getAutor();
+            editorial = nuevoLibroEntity.getEditorial();
+            edicion = nuevoLibroEntity.getEdicion();
+            estado = nuevoLibroEntity.getEstado();
+            portada = nuevoLibroEntity.getPortada();
+            precio = nuevoLibroEntity.getPrecio();
+            if(nuevoLibroEntity.getUsuario()!=null){
+            duenio=new UsuarioDTO(nuevoLibroEntity.getUsuario());
+            }
         }
     }
 
@@ -189,7 +194,7 @@ public class LibroDTO implements Serializable{
      */
     public void setPrecio(Double precio) {
         this.precio = precio;
-    } 
+    }
 
     public UsuarioDTO getDuenio() {
         return duenio;
@@ -198,20 +203,33 @@ public class LibroDTO implements Serializable{
     public void setDuenio(UsuarioDTO duenio) {
         this.duenio = duenio;
     }
-    
-    
-     public LibroEntity toEntity() {
-    LibroEntity entity = new LibroEntity();
-    entity.setISBN(ISBN);
-    entity.setTitulo(titulo);
-    entity.setAutor(autor);
-    entity.setEditorial(editorial);
-    entity.setEdicion(edicion);
-    entity.setEstado(estado);
-    entity.setPortada(portada);
-    entity.setPrecio(precio);
-    entity.setUsuario(duenio.toEntity());
-    return entity;
-}
-    
+
+    public LibroEntity toEntity() {
+        LOGGER.info("LibroDTO to entity: Creando entidad a partir de DTO");
+        LibroEntity entity = new LibroEntity();
+        LOGGER.info("LibroDTO to entity: Se creo entidad vacía");
+        entity.setISBN(ISBN);
+        LOGGER.info("LibroDTO to entity: Se set ISBN");
+        entity.setTitulo(titulo);
+        LOGGER.info("LibroDTO to entity: Set titulo");
+        entity.setAutor(autor);
+        LOGGER.info("LibroDTO to entity: Set Autor");
+        entity.setEditorial(editorial);
+        LOGGER.info("LibroDTO to entity: Set Editorial");
+        entity.setEdicion(edicion);
+        LOGGER.info("LibroDTO to entity: Set Edicion");
+        entity.setEstado(estado);
+        LOGGER.info("LibroDTO to entity: Set Estado");
+        entity.setPortada(portada);
+        LOGGER.info("LibroDTO to entity: Set portada");
+        entity.setPrecio(precio);
+        LOGGER.info("LibroDTO to entity: Set Precio");
+        if (duenio != null) {
+            entity.setUsuario(duenio.toEntity());
+            LOGGER.info("LibroDTO to entity: Set Usuario");
+        }
+        LOGGER.info("LibroDTO to entity: Retorno");
+        return entity;
+    }
+
 }

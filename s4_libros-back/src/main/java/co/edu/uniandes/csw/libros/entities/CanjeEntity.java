@@ -33,12 +33,12 @@ public class CanjeEntity extends BaseEntity implements Serializable {
     private String estado;
     
     @PodamExclude
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private LibroEntity libroOfrecido;
     
     
     @PodamExclude
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private LibroEntity libroPedido;
     
     @PodamExclude
@@ -50,7 +50,7 @@ public class CanjeEntity extends BaseEntity implements Serializable {
     private UsuarioEntity usuarioQueRecibe;
     
     @PodamExclude
-    @OneToOne(cascade= CascadeType.PERSIST)
+    @OneToOne(cascade= CascadeType.ALL)
     private RespuestaEntity respuesta;
 
     public CanjeEntity(){
@@ -127,16 +127,12 @@ public class CanjeEntity extends BaseEntity implements Serializable {
         this.usuarioQueRecibe = usuarioQueRecibe;
     }
 
-    /**
-     * @return the respuesta
-     */
+    
     public RespuestaEntity getRespuesta() {
         return respuesta;
     }
 
-    /**
-     * @param respuesta the respuesta to set
-     */
+
     public void setRespuesta(RespuestaEntity respuesta) {
         this.respuesta = respuesta;
     }

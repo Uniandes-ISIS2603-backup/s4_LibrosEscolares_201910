@@ -13,60 +13,52 @@ import co.edu.uniandes.csw.libros.entities.UsuarioEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author estudiante
  */
-public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
-    
+public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
+
     private List<TarjetaDeCreditoDTO> tarjetas;
     private List<LibroDTO> libros;
     private List<CanjeDTO> canjesRecibidos;
     private List<CanjeDTO> canjesCreados;
-     private CarroComprasEntity carroCompras;
+    private CarroComprasEntity carroCompras;
 
-    
-    public UsuarioDetailDTO()
-    {
-        
+    private static final Logger LOGGER = Logger.getLogger(UsuarioDetailDTO.class.getName());
+
+    public UsuarioDetailDTO() {
+
     }
-    
-    public UsuarioDetailDTO(UsuarioEntity entity)
-    {
+
+    public UsuarioDetailDTO(UsuarioEntity entity) {
         super(entity);
-        if(entity !=null)
-        {
-            if(entity.getTarjetas()!=null)
-            {
+        if (entity != null) {
+            if (entity.getTarjetas() != null) {
                 tarjetas = new ArrayList<>();
-                for(TarjetaDeCreditoEntity te : entity.getTarjetas())
-                {
-                  //  tarjetas.add(new TarjetaDeCreditoDTO(te));
+                for (TarjetaDeCreditoEntity te : entity.getTarjetas()) {
+                    //  tarjetas.add(new TarjetaDeCreditoDTO(te));
                 }
             }
-            if(entity.getLibros()!=null)
-            {
+            if (entity.getLibros() != null) {
                 libros = new ArrayList<>();
-                for(LibroEntity le : entity.getLibros())
-                {
-                  //  libros.add(new LibroDTO(le));
+                for (LibroEntity le : entity.getLibros()) {
+                    libros.add(new LibroDTO(le));
                 }
             }
-            if(entity.getCanjesRecibidos()!=null)
-            {
+            if (entity.getCanjesRecibidos() != null) {
                 canjesRecibidos = new ArrayList<>();
-                for(CanjeEntity ce : entity.getCanjesRecibidos())
-                {
-                  //  canjesRecibidos.add(new CanjeDTO(ce));
+                for (CanjeEntity ce : entity.getCanjesRecibidos()) {
+                    canjesRecibidos.add(new CanjeDTO(ce));
                 }
             }
-            if(entity.getCanjesCreados()!=null)
-            {
+            if (entity.getCanjesCreados() != null) {
                 canjesCreados = new ArrayList<>();
-                for(CanjeEntity ce : entity.getCanjesCreados())
-                {
-                  //  canjesCreados.add(new CanjeDTO(ce));
+                for (CanjeEntity ce : entity.getCanjesCreados()) {
+                    canjesCreados.add(new CanjeDTO(ce));
                 }
             }
             /*
@@ -86,44 +78,47 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
                   //  ordenesRecibidas.add(new OrdenDTO(oe));
                 }
             }*/
-            carroCompras = entity.getCarro();
+            if (entity.getCarro() != null) {
+                carroCompras = entity.getCarro();
+            }
         }
     }
+
     @Override
-    public UsuarioEntity toEntity()
-    {
+    public UsuarioEntity toEntity() {
         UsuarioEntity entidad = super.toEntity();
-        if(getTarjetas() !=null)
-        {
-            List<TarjetaDeCreditoEntity> te = new ArrayList<>();
-            for(TarjetaDeCreditoDTO dtoTarjeta: getTarjetas())
-            {
-                te.add(dtoTarjeta.toEntity());
-            }
-        }
-        if(getLibros() !=null)
-        {
+        /**
+         * if(getTarjetas() !=null) { List<TarjetaDeCreditoEntity> te = new
+         * ArrayList<>(); for(TarjetaDeCreditoDTO dtoTarjeta: getTarjetas()) {
+         * te.add(dtoTarjeta.toEntity()); } entidad.setTarjetas(te);
+        }*
+         */
+        if (getLibros() != null) {
             List<LibroEntity> le = new ArrayList<>();
-            for(LibroDTO dtoLibro: getLibros())
-            {
+            for (LibroDTO dtoLibro : getLibros()) {
                 le.add(dtoLibro.toEntity());
             }
+            entidad.setLibros(le);
         }
-        if(getCanjesRecibidos() !=null)
-        {
+        if (getCanjesRecibidos() != null) {
             List<CanjeEntity> ce = new ArrayList<>();
-            for(CanjeDTO dtoCanje: getCanjesRecibidos())
-            {
+            for (CanjeDTO dtoCanje : getCanjesRecibidos()) {
                 ce.add(dtoCanje.toEntity());
             }
+            entidad.setCanjesRecibidos(ce);
         }
-        if(getCanjesCreados() !=null)
-        {
+        if (getCanjesCreados() != null) {
             List<CanjeEntity> ce = new ArrayList<>();
-            for(CanjeDTO dtoCanje: getCanjesCreados())
-            {
-                ce.add(dtoCanje.toEntity());
+            LOGGER.log(Level.INFO, "Creando canje: ");
+            for (CanjeDTO dtoCanje : getCanjesCreados()) {
+                LOGGER.log(Level.INFO, "Creando canje con id: " + dtoCanje.getId());
+                CanjeEntity canje = dtoCanje.toEntity();
+                LOGGER.log(Level.INFO, "Canje creado con id:  " + canje.getId());
+                ce.add(canje);
+                LOGGER.log(Level.INFO, "Canje agregado a la lista");
+
             }
+            entidad.setCanjesCreados(ce);
         }/*
         if(ordenesCreadas !=null)
         {
@@ -141,7 +136,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
                 //oe.add(dtoOrden.toEntity());
             }
         }*/
-        entidad.setCarro(carroCompras);
+
         return entidad;
     }
 
@@ -214,5 +209,5 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable{
     public void setCarroCompras(CarroComprasEntity carroCompras) {
         this.carroCompras = carroCompras;
     }
-    
+
 }

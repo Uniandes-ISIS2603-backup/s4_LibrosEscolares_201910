@@ -30,10 +30,11 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
     @OneToOne( fetch = FetchType.LAZY)
     private UsuarioEntity comprador;
     @PodamExclude
-    @OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany( fetch = FetchType.LAZY)
     private List<LibroEntity> libros = new ArrayList<>();
     
     @PodamExclude
+    @OneToOne(cascade = CascadeType.PERSIST)
     private UsuarioEntity dueno;
     
     public CarroComprasEntity(){
@@ -85,6 +86,14 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
 
     public void setLibros(List<LibroEntity> libros) {
         this.libros = libros;
+    }
+
+    public UsuarioEntity getDueno() {
+        return dueno;
+    }
+
+    public void setDueno(UsuarioEntity dueno) {
+        this.dueno = dueno;
     }
     
 }

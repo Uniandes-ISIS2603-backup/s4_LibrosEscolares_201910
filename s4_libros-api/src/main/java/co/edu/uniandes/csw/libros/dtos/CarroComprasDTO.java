@@ -12,25 +12,26 @@ import java.io.Serializable;
  *
  * @author Andres Ramirez, Diego Gómez
  */
-public class CarroComprasDTO implements Serializable{
-    
+public class CarroComprasDTO implements Serializable {
+
     private Long id;
     private Double valorPagar;
     private UsuarioDTO comprador;
     private String nombreU;
-    
-    public CarroComprasDTO(){
-        
+
+    public CarroComprasDTO() {
+
     }
-    
-    public CarroComprasDTO(CarroComprasEntity entity){
-    id = entity.getId();
-    valorPagar = entity.getValorPagar();
-    
-    nombreU = entity.getNombreU();
-    
-    
-    comprador = new UsuarioDTO(entity.getComprador());
+
+    public CarroComprasDTO(CarroComprasEntity entity) {
+        if (entity != null) {
+            id = entity.getId();
+            valorPagar = entity.getValorPagar();
+            nombreU = entity.getNombreU();
+            if (entity.getComprador() != null) {
+                comprador = new UsuarioDTO(entity.getComprador());
+            }
+        }
     }
 
     /**
@@ -88,23 +89,19 @@ public class CarroComprasDTO implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
-    public CarroComprasEntity toEntity(){
-    CarroComprasEntity carro = new CarroComprasEntity();
-    carro.setId(this.getId());
-    carro.setNombreU(this.nombreU);
-    carro.setValorPagar(valorPagar);
-    
-    //TODO
-    carro.setComprador(comprador.toEntity());
-    
-    
-    
-    return carro;
+
+    public CarroComprasEntity toEntity() {
+        CarroComprasEntity carro = new CarroComprasEntity();
+        carro.setId(this.getId());
+        carro.setNombreU(this.nombreU);
+        carro.setValorPagar(valorPagar);
+
+        //TODO
+        if (comprador != null) {
+            carro.setComprador(comprador.toEntity());
+        }
+
+        return carro;
     }
-    
-    
-    
-    
+
 }

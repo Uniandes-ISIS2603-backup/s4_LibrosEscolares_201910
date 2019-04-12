@@ -14,48 +14,69 @@ import java.util.Date;
  * @author estudiante
  */
 public class CanjeDTO implements Serializable {
-    
+
     private Long id;
-    
+
     private Date fechaDeCreacion;
-    
+
     private String estado;
-    
+
     private RespuestaDTO respuesta;
-    
+
     private LibroDTO libroOfrecido;
-    
+
     private LibroDTO libroPedido;
-    
+
     private UsuarioDTO usuarioQueOfrece;
-    
+
     private UsuarioDTO usuarioQueRecibe;
-    
-    
-    
-    public void CanjeDTO(){}
-    
-    public CanjeDTO(CanjeEntity entidad){
-        setId(entidad.getId());
-        setFechaDeCreacion(entidad.getFechaDeCreacion());
-     setEstado(entidad.getEstado());
-       // setRespuesta(new RespuestaDTO(entidad.getRespuesta()));
-        setLibroOfrecido(new LibroDTO(entidad.getLibroOfrecido()));
-        setLibroPedido(new LibroDTO(entidad.getLibroPedido()));
-        setUsuarioQueOfrece(new UsuarioDTO(entidad.getUsuarioQueOfrece()));
-        setUsuarioQueRecibe(new UsuarioDTO(entidad.getUsuarioQueRecibe()));
+
+    public CanjeDTO() {
     }
-    
-    public CanjeEntity toEntity(){
-        CanjeEntity entidad=new CanjeEntity();
+
+    public CanjeDTO(CanjeEntity entidad) {
+        if (entidad != null) {
+            setId(entidad.getId());
+            setFechaDeCreacion(entidad.getFechaDeCreacion());
+            setEstado(entidad.getEstado());
+            if (entidad.getRespuesta() != null) {
+                setRespuesta(new RespuestaDTO(entidad.getRespuesta()));
+            }
+            if (entidad.getLibroOfrecido() != null) {
+                setLibroOfrecido(new LibroDTO(entidad.getLibroOfrecido()));
+            }
+            if (entidad.getUsuarioQueRecibe() != null) {
+                setLibroPedido(new LibroDTO(entidad.getLibroPedido()));
+            }
+            if (entidad.getUsuarioQueOfrece() != null) {
+                setUsuarioQueOfrece(new UsuarioDTO(entidad.getUsuarioQueOfrece()));
+            }
+            if (entidad.getUsuarioQueRecibe() != null) {
+                setUsuarioQueRecibe(new UsuarioDTO(entidad.getUsuarioQueRecibe()));
+            }
+        }
+    }
+
+    public CanjeEntity toEntity() {
+        CanjeEntity entidad = new CanjeEntity();
         entidad.setId(this.getId());
         entidad.setFechaDeCreacion(this.getFechaDeCreacion());
         entidad.setEstado(this.getEstado());
-        entidad.setRespuesta(this.getRespuesta().toEntity());
-        entidad.setLibroOfrecido(this.getLibroOfrecido().toEntity());
-        entidad.setLibroPedido(this.getLibroPedido().toEntity());
-        entidad.setUsuarioQueOfrece(this.getUsuarioQueOfrece().toEntity());
-        entidad.setUsuarioQueRecibe(this.getUsuarioQueRecibe().toEntity());
+        if (this.getRespuesta() != null) {
+            entidad.setRespuesta(this.getRespuesta().toEntity());
+        }
+        if (this.getLibroOfrecido() != null) {
+            entidad.setLibroOfrecido(this.getLibroOfrecido().toEntity());
+        }
+        if (this.getLibroPedido() != null) {
+            entidad.setLibroPedido(this.getLibroPedido().toEntity());
+        }
+        if (this.getUsuarioQueOfrece() != null) {
+            entidad.setUsuarioQueOfrece(this.getUsuarioQueOfrece().toEntity());
+        }
+        if (this.getUsuarioQueRecibe() != null) {
+            entidad.setUsuarioQueRecibe(this.getUsuarioQueRecibe().toEntity());
+        }
         return entidad;
     }
 
@@ -100,20 +121,16 @@ public class CanjeDTO implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    /**
-     * @return the respuesta
-     */
+
+  
     public RespuestaDTO getRespuesta() {
         return respuesta;
     }
 
-    /**
-     * @param respuesta the respuesta to set
-     */
+
     public void setRespuesta(RespuestaDTO respuesta) {
-        if(respuesta!=null){
-        this.respuesta = respuesta;
+        if (respuesta != null) {
+            this.respuesta = respuesta;
         }
     }
 
@@ -172,6 +189,5 @@ public class CanjeDTO implements Serializable {
     public void setUsuarioQueRecibe(UsuarioDTO usuarioQueRecibe) {
         this.usuarioQueRecibe = usuarioQueRecibe;
     }
-    
-    
+
 }

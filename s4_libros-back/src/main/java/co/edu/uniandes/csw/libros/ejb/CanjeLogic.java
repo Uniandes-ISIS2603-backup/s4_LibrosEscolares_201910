@@ -36,6 +36,9 @@ public class CanjeLogic {
 //        else if(canje.getLibroOfrecido().getId()==canje.getLibroPedido().getId()){
 //            throw new BusinessLogicException("No se puede ofrecer un libro en canje a cambio de si mismo");
 //        }
+
+        canje = persistence.create(canje);
+        LOGGER.log(Level.INFO, "cnaje id: "+canje.getId()+" estado: "+canje.getEstado());
         return canje;
     }
 

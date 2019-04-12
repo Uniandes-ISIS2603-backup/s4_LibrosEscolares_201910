@@ -43,7 +43,9 @@ public class CanjeResource {
         
         @POST
         public CanjeDTO crearCanje(CanjeDTO canje){
+            LOGGER.log(Level.INFO, "Empezó creación de canje. id:"+ canje.getId());
             CanjeEntity canjeEntity=canje.toEntity();
+            LOGGER.log(Level.INFO, "Se creo la entidad a persistir. id:"+ canjeEntity.getId());
             System.out.println("entro");
         try {
             canjeEntity=logica.createCanje(canjeEntity);

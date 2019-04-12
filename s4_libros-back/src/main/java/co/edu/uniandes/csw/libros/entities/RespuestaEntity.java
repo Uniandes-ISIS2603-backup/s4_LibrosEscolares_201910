@@ -30,6 +30,7 @@ public class RespuestaEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaEnvio;
 
+    
     @PodamExclude
     @OneToOne(mappedBy = "respuesta", fetch = FetchType.LAZY)
     private CanjeEntity canje;
@@ -93,16 +94,12 @@ public class RespuestaEntity extends BaseEntity implements Serializable {
         this.fechaEnvio = fechaEnvio;
     }
 
-    /**
-     * @return the canje
-     */
+
+    
     public CanjeEntity getCanje() {
         return canje;
     }
 
-    /**
-     * @param canje the canje to set
-     */
     public void setCanje(CanjeEntity canje) {
         this.canje = canje;
     }
