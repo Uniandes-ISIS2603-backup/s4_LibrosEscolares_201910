@@ -34,7 +34,7 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
     private List<LibroEntity> libros = new ArrayList<>();
     
     @PodamExclude
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     private UsuarioEntity dueno;
     
     public CarroComprasEntity(){
