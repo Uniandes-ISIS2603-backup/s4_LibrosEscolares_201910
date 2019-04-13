@@ -28,7 +28,7 @@ public class UsuarioPersistence {
 
     public UsuarioEntity create(UsuarioEntity ue) {
         //ue.crearCarro();
-         LOGGER.log(Level.INFO, "BBBBBBBBBBBBB:  "+ue.getCanjesCreados().get(0));
+         LOGGER.log(Level.INFO, "BBBBBBBBBBBBB:  ");
         em.persist(ue);
         
         

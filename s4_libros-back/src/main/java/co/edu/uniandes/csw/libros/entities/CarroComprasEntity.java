@@ -27,10 +27,10 @@ public class CarroComprasEntity extends BaseEntity implements Serializable{
     private String  nombreU;
     
     @PodamExclude
-    @OneToOne( fetch = FetchType.LAZY)
+    @OneToOne( cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     private UsuarioEntity comprador;
     @PodamExclude
-    @OneToMany( fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<LibroEntity> libros = new ArrayList<>();
     
     @PodamExclude
