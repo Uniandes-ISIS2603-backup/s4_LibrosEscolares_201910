@@ -80,6 +80,8 @@ public class UsuarioResource {
         return listaUsuarios;
     }
     
+    
+    
     private List<UsuarioDetailDTO> listEntity2DetailDTO(List<UsuarioEntity> entityList) {
         List<UsuarioDetailDTO> list = new ArrayList<>();
         for (UsuarioEntity entity : entityList) {
@@ -151,6 +153,8 @@ public class UsuarioResource {
          //LOGGER.log(Level.INFO, "AAAAAAAAAAAAAAAAAA:  "+detailDTO.getCarroCompras().getId());
         return detailDTO;
     }
+    
+    
 
 }
 
