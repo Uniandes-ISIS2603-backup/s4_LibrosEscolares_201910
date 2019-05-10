@@ -79,6 +79,8 @@ public class LibroResource {
         return listaLibros;
     }
     
+   
+    
     private List<LibroDetailDTO> listaEntityADetailDTO(List<LibroEntity> entityList) {
         List<LibroDetailDTO> list = new ArrayList<>();
         for (LibroEntity entity : entityList) {
@@ -116,5 +118,19 @@ public class LibroResource {
         libroLogic.eliminarLibro(librosId);
         LOGGER.info("LibroResource deleteLibro: output: void");
          return detailDTO;
+    }
+    
+          @GET
+    @Path("/nombre/{nombre}")
+    public List<LibroDetailDTO> getLibrosPorNombre(@PathParam("nombre") String nombre) throws WebApplicationException
+    {
+        LOGGER.log(Level.INFO, "Libro getLibrosPorNombre: ", nombre);
+        List<LibroDetailDTO> listaLibros = listaEntityADetailDTO(libroLogic.getLibrosPorNombre(nombre));
+       
+        if(listaLibros.isEmpty())
+        {
+            throw new WebApplicationException("No existen libros con el nombre: "+nombre,404);
+        }
+        return listaLibros;
     }
 }
