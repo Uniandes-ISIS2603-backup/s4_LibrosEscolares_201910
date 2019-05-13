@@ -51,6 +51,14 @@ public class LibroPersistence {
         
         return names;
     }
+    
+    public List<LibroEntity> findByAutor(String autor) {
+        TypedQuery<LibroEntity> query = em.createQuery("select u from LibroEntity u where u.autor = :autor", LibroEntity.class);
+        query = query.setParameter("autor", autor);
+        List<LibroEntity> names = query.getResultList();
+        
+        return names;
+    }
    
     
 

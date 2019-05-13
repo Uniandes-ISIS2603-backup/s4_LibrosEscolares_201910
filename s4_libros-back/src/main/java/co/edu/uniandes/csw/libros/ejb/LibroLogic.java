@@ -51,6 +51,10 @@ public class LibroLogic {
     public List<LibroEntity> getLibrosPorNombre(String titulo) {
         return persistence.findByName(titulo);
     }
+    
+    public List<LibroEntity> getLibrosPorAutor(String autor) {
+        return persistence.findByAutor(autor);
+    }
 
     public LibroEntity actualizarLibro(LibroEntity entity) {
         return persistence.actualizar(entity);

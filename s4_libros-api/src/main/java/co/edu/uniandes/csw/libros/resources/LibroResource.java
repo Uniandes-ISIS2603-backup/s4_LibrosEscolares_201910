@@ -132,5 +132,19 @@ public class LibroResource {
             throw new WebApplicationException("No existen libros con el nombre: "+nombre,404);
         }
         return listaLibros;
+    } 
+    
+         @GET
+    @Path("/autor/{autor}")
+    public List<LibroDetailDTO> getLibrosPorAutor(@PathParam("autor") String autor) throws WebApplicationException
+    {
+        LOGGER.log(Level.INFO, "Libro getLibrosPorAutor: ", autor);
+        List<LibroDetailDTO> listaLibros = listaEntityADetailDTO(libroLogic.getLibrosPorAutor(autor));
+       
+        if(listaLibros.isEmpty())
+        {
+            throw new WebApplicationException("No existen libros con el autor: "+autor,404);
+        }
+        return listaLibros;
     }
 }
