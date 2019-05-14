@@ -123,7 +123,7 @@ public class LibroResource {
           @GET
     @Path("/nombre/{nombre}")
     public List<LibroDetailDTO> getLibrosPorNombre(@PathParam("nombre") String nombre) throws WebApplicationException
-    {
+    {  
         LOGGER.log(Level.INFO, "Libro getLibrosPorNombre: ", nombre);
         List<LibroDetailDTO> listaLibros = listaEntityADetailDTO(libroLogic.getLibrosPorNombre(nombre));
        
