@@ -8,7 +8,9 @@ package co.edu.uniandes.csw.libros.resources;
 import co.edu.uniandes.csw.libros.dtos.LibroDTO;
 import co.edu.uniandes.csw.libros.dtos.LibroDetailDTO;
 import co.edu.uniandes.csw.libros.ejb.LibroLogic;
+import co.edu.uniandes.csw.libros.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
+import co.edu.uniandes.csw.libros.entities.UsuarioEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -134,7 +136,7 @@ public class LibroResource {
         return listaLibros;
     } 
     
-         @GET
+    @GET
     @Path("/autor/{autor}")
     public List<LibroDetailDTO> getLibrosPorAutor(@PathParam("autor") String autor) throws WebApplicationException
     {
@@ -146,5 +148,19 @@ public class LibroResource {
             throw new WebApplicationException("No existen libros con el autor: "+autor,404);
         }
         return listaLibros;
+    }
+    
+     @GET
+    @Path("/duenio/{duenio}")
+    public UsuarioDetailDTO getDuenioDeLibro(@PathParam("duenio") Long duenio) throws WebApplicationException
+    {
+        LOGGER.log(Level.INFO, "Usuario getDuenioDeLibro: ", duenio);
+        UsuarioEntity entidad=libroLogic.getDuenioLibro(duenio);
+       UsuarioDetailDTO  duenioLibro = new UsuarioDetailDTO(entidad);
+        if(duenioLibro==null)
+        {
+            throw new WebApplicationException("El usuario dueño de este libro fue eliminado: "+duenio,404);
+        }
+        return duenioLibro;
     }
 }

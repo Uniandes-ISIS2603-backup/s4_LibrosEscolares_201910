@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.libros.persistence;
 
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
+import co.edu.uniandes.csw.libros.entities.UsuarioEntity;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -84,5 +86,11 @@ public class LibroPersistence {
     public void eliminar(long id) {
         LibroEntity libroEntity=find(id);
         em.remove(libroEntity);
+    }
+    
+    public UsuarioEntity findDuenio(long libroId) {
+        LibroEntity libro = find(libroId);
+        UsuarioEntity retornable=libro.getUsuario();
+        return retornable;
     }
 }

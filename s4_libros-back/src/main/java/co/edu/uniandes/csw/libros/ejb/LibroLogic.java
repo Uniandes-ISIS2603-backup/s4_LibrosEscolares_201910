@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.libros.ejb;
 
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
+import co.edu.uniandes.csw.libros.entities.UsuarioEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.LibroPersistence;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -62,6 +64,10 @@ public class LibroLogic {
 
     public void eliminarLibro(Long librosId) {
         persistence.eliminar(librosId);
+    }
+    
+    public UsuarioEntity getDuenioLibro(Long libro) {
+        return persistence.findDuenio(libro);
     }
 
 }
