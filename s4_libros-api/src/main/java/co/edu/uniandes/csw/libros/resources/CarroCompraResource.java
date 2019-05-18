@@ -73,6 +73,25 @@ public class CarroCompraResource {
         return dto;
 
     }
+    
+    @GET
+    @Path("/usuario/{usuario}")
+    public CarroComprasDetailDTO getCarroUsuario(@PathParam("usuario") Long usuario) throws WebApplicationException
+    {
+        CarroComprasEntity carro =null;
+        try
+        {
+         carro = logica.getCarroComprasUsuario(usuario);
+        }
+        catch(BusinessLogicException e)
+        {
+        }
+        if (carro == null) {
+            throw new WebApplicationException("El recurso /carrosCompras/" + usuario + " no existe.", 404);
+        }
+        CarroComprasDetailDTO dto = new CarroComprasDetailDTO(carro);
+        return dto;
+    }
     @PUT
     @Path("{carroId: \\d+}")
     public CarroComprasDetailDTO updateCarroCompras(@PathParam("carroId") Long id, CarroComprasDetailDTO carro) throws WebApplicationException, BusinessLogicException {

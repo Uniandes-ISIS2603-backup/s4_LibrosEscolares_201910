@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.libros.persistence;
 
 import co.edu.uniandes.csw.libros.entities.CarroComprasEntity;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,6 +31,21 @@ public class CarroComprasPersistence {
     public CarroComprasEntity find(Long carroComprasId) {
 
         return em.find(CarroComprasEntity.class, carroComprasId);
+
+    }
+    
+     public CarroComprasEntity findPorUsuario(Long usuario) {
+
+         
+       TypedQuery<CarroComprasEntity> query = em.createQuery("select u from CarroComprasEntity u", CarroComprasEntity.class);        
+        List<CarroComprasEntity> lista=query.getResultList();
+        Iterator<CarroComprasEntity> iterador=lista.iterator();
+       CarroComprasEntity names = iterador.next();
+       while(iterador.hasNext()&&names.getDueno().getId()!=usuario)
+       {
+           names = iterador.next();
+       }
+        return names;
 
     }
 

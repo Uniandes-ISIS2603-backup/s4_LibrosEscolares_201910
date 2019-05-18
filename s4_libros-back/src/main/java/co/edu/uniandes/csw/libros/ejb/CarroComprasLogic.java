@@ -39,6 +39,15 @@ public class CarroComprasLogic {
         return carro;
 
     }
+    public CarroComprasEntity getCarroComprasUsuario(Long usuario) throws BusinessLogicException {
+        CarroComprasEntity carro = persistence.findPorUsuario(usuario);
+        if (carro == null) {
+            throw new BusinessLogicException("No existe un carro de compras con este id de usuario: " + usuario);
+        }
+
+        return carro;
+
+    }
 
     public CarroComprasEntity updateCarroCompras(CarroComprasEntity entity) {
         return persistence.update(entity);
