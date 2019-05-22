@@ -61,26 +61,8 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
                     canjesCreados.add(new CanjeDTO(ce));
                 }
             }
-            /*
-            if(entity.getOrdenesCreadas()!=null)
-            {
-                ordenesCreadas = new ArrayList<>();
-                for(OrdenEntity oe : entity.getOrdenesCreadas())
-                {
-                  //  ordenesCreadas.add(new OrdenDTO(oe));
-                }
-            }
-            if(entity.getOrdenesRecibidas()!=null)
-            {
-                ordenesRecibidas = new ArrayList<>();
-                for(OrdenEntity oe : entity.getOrdenesRecibidas())
-                {
-                  //  ordenesRecibidas.add(new OrdenDTO(oe));
-                }
-            }*/
-            if (entity.getCarro() != null) {
-                carroCompras = entity.getCarro();
-            }
+          
+            
         }
     }
 

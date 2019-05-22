@@ -36,11 +36,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "usuarioQueRecibe", cascade = CascadeType.ALL)
     private List<CanjeEntity> canjesCreados;
-    @PodamExclude
-    
-    @OneToOne(mappedBy = "dueno",cascade = CascadeType.ALL)
-    private CarroComprasEntity carroCompras;
-  
+   
     
     
    
@@ -124,25 +120,6 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
         return canjesCreados;
     }
 
-   public void crearCarro(){
-       carroCompras = new CarroComprasEntity();
-       carroCompras.setId(this.getId());
-       carroCompras.setComprador(this);
-       carroCompras.setValorPagar(0.0);
-       carroCompras.setNombreU(this.nombreUsuario);
-       carroCompras.setLibros(new ArrayList<LibroEntity>());
-   }
-
-   public CarroComprasEntity getCarro()
-   {
-       return carroCompras;
-   }
-   
-   public void setCarro(CarroComprasEntity pCC)
-   {
-       carroCompras = pCC;
-   }
-
     public void setTarjetas(List<TarjetaDeCreditoEntity> tarjetas) {
         this.tarjetas = tarjetas;
     }
@@ -159,10 +136,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
         this.canjesCreados = canjesCreados;
     }
 
-    public void setCarroCompras(CarroComprasEntity carroCompras) {
-        this.carroCompras = carroCompras;
-    }
-    
+  
 
 
 }

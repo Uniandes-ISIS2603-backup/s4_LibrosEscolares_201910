@@ -46,7 +46,6 @@ public class UsuarioLogic {
             LOGGER.log(Level.SEVERE, "El usuario con el id = {0} no existe", usuariosId);
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar el usuario con id = {0}", usuariosId);
-        LOGGER.log(Level.INFO, "AAAAAAAAAAAAAAAAAA:  " + usuarioEntity.getCarro());
         return usuarioEntity;
     }
 

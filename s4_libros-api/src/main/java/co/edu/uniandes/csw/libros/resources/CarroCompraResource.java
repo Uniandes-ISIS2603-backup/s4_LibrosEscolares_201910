@@ -75,7 +75,7 @@ public class CarroCompraResource {
     }
     
     @GET
-    @Path("/usuario/{usuario}")
+    @Path("//usuario/{usuario}")
     public CarroComprasDetailDTO getCarroUsuario(@PathParam("usuario") Long usuario) throws WebApplicationException
     {
         CarroComprasEntity carro =null;

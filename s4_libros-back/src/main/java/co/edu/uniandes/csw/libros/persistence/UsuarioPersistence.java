@@ -38,7 +38,6 @@ public class UsuarioPersistence {
     public UsuarioEntity find(Long id) {
          
          UsuarioEntity c = em.find(UsuarioEntity.class, id);
-         LOGGER.log(Level.INFO, "CCCCCCCCCCCCCCC:  "+c.getCarro());
         return c;
     }
     

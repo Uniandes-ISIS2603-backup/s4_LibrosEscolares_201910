@@ -45,6 +45,7 @@ public class CarroComprasPersistence {
        {
            names = iterador.next();
        }
+       
         return names;
 
     }
