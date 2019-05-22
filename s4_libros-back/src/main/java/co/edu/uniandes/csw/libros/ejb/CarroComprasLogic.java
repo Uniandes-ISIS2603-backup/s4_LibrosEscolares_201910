@@ -6,8 +6,10 @@
 package co.edu.uniandes.csw.libros.ejb;
 
 import co.edu.uniandes.csw.libros.entities.CarroComprasEntity;
+import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.CarroComprasPersistence;
+import co.edu.uniandes.csw.libros.persistence.LibroPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -21,6 +23,8 @@ public class CarroComprasLogic {
 
     @Inject
     private CarroComprasPersistence persistence;
+    @Inject
+    private LibroPersistence persistenceLibros;
 
     public CarroComprasEntity crearCarroCompras(CarroComprasEntity entity) throws BusinessLogicException {
         if (persistence.find(entity.getId()) != null) {
@@ -59,6 +63,18 @@ public class CarroComprasLogic {
     
     public List<CarroComprasEntity> getCarrosCompras(){
     return persistence.findAll();
+    }
+    
+    public void removeBook(Long carroId, Long libroId){
+    CarroComprasEntity carroEntity = persistence.find(carroId);
+    LibroEntity libroEntity = persistenceLibros.find(libroId);
+    carroEntity.getLibros().remove(libroEntity);
+    }
+    
+     public void addBook(Long carroId, Long libroId){
+    CarroComprasEntity carroEntity = persistence.find(carroId);
+    LibroEntity libroEntity = persistenceLibros.find(libroId);
+    carroEntity.getLibros().add(libroEntity);
     }
 
 }

@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.libros.resources;
 import co.edu.uniandes.csw.libros.dtos.CarroComprasDTO;
 import co.edu.uniandes.csw.libros.dtos.CarroComprasDetailDTO;
 import co.edu.uniandes.csw.libros.ejb.CarroComprasLogic;
+import co.edu.uniandes.csw.libros.ejb.LibroLogic;
 import co.edu.uniandes.csw.libros.entities.CarroComprasEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -39,6 +40,8 @@ public class CarroCompraResource {
 
     @Inject
     private CarroComprasLogic logica;
+    @Inject
+    private LibroLogic logicaLibros;
 
     @POST
     public CarroComprasDetailDTO createCarroCompras(CarroComprasDetailDTO carro) throws BusinessLogicException {
@@ -114,5 +117,33 @@ public class CarroCompraResource {
         logica.deleteCarroCompras(id);
 
     }
+    
+        @DELETE
+    @Path("{carroId: \\d+}/libros/{libroId: \\d+}")
+    public void removeLibro(@PathParam("carroId") Long id, @PathParam("libroId") Long libroId) throws BusinessLogicException {
+        if (logica.getCarroCompras(id) == null) {
+            throw new WebApplicationException("El recurso /carrosCompras/" + id +"/libros/"+libroId+ " no existe.", 404);
+        }
+        if(logicaLibros.getLibro(libroId)==null){
+        }
+        logica.removeBook(id, libroId);
+
+    }
+    
+     @PUT
+    @Path("{carroId: \\d+}/libros/{libroId: \\d+}")
+    public void addLibro(@PathParam("carroId") Long id, @PathParam("libroId") Long libroId) throws BusinessLogicException {
+        if (logica.getCarroCompras(id) == null) {
+            throw new WebApplicationException("El recurso /carrosCompras/" + id +"/libros/"+libroId+ " no existe.", 404);
+        }
+        if(logicaLibros.getLibro(libroId)==null){
+        }
+        logica.addBook(id, libroId);
+
+    }
+    
+    
+    
+    
 
 }
