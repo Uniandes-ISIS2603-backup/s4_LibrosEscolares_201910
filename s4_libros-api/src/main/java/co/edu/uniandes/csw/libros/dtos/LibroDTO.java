@@ -56,7 +56,7 @@ public class LibroDTO implements Serializable {
      *
      * @return
      */
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -64,7 +64,7 @@ public class LibroDTO implements Serializable {
      *
      * @param id
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -136,7 +136,7 @@ public class LibroDTO implements Serializable {
      *
      * @return
      */
-    public int getEdicion() {
+    public Integer getEdicion() {
         return edicion;
     }
 
@@ -144,7 +144,7 @@ public class LibroDTO implements Serializable {
      *
      * @param edicion
      */
-    public void setEdicion(int edicion) {
+    public void setEdicion(Integer edicion) {
         this.edicion = edicion;
     }
 

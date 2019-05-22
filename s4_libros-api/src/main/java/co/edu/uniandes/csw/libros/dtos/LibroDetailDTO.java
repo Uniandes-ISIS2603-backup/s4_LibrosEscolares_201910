@@ -15,7 +15,6 @@ import java.io.Serializable;
  */
 public class LibroDetailDTO extends LibroDTO implements Serializable{
 
-    private UsuarioEntity duenio;
 
    
     /**

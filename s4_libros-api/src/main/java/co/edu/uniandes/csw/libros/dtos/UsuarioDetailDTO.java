@@ -26,7 +26,7 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
     private List<LibroDTO> libros;
     private List<CanjeDTO> canjesRecibidos;
     private List<CanjeDTO> canjesCreados;
-    private CarroComprasEntity carroCompras;
+    private CarroComprasDTO carroCompras;
 
     private static final Logger LOGGER = Logger.getLogger(UsuarioDetailDTO.class.getName());
 
@@ -181,14 +181,14 @@ public class UsuarioDetailDTO extends UsuarioDTO implements Serializable {
     /**
      * @return the carroCompras
      */
-    public CarroComprasEntity getCarroCompras() {
+    public CarroComprasDTO getCarroCompras() {
         return carroCompras;
     }
 
     /**
      * @param carroCompras the carroCompras to set
      */
-    public void setCarroCompras(CarroComprasEntity carroCompras) {
+    public void setCarroCompras(CarroComprasDTO carroCompras) {
         this.carroCompras = carroCompras;
     }
 

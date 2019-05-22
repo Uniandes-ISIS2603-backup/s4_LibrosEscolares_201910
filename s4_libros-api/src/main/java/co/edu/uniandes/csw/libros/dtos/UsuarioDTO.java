@@ -72,7 +72,7 @@ public class UsuarioDTO implements Serializable {
     /**
      * @param calificacion the calificacion to set
      */
-    public void setCalificacion(int calificacion) {
+    public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
 
@@ -86,7 +86,7 @@ public class UsuarioDTO implements Serializable {
     /**
      * @param id the id to set
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -129,7 +129,7 @@ public class LibroResource {
         LOGGER.log(Level.INFO, "Libro getLibrosPorNombre: ", nombre);
         List<LibroDetailDTO> listaLibros = listaEntityADetailDTO(libroLogic.getLibrosPorNombre(nombre));
        
-        if(listaLibros.isEmpty())
+        if(listaLibros==null || listaLibros.isEmpty())
         {
             throw new WebApplicationException("No existen libros con el nombre: "+nombre,404);
         }
@@ -143,7 +143,7 @@ public class LibroResource {
         LOGGER.log(Level.INFO, "Libro getLibrosPorAutor: ", autor);
         List<LibroDetailDTO> listaLibros = listaEntityADetailDTO(libroLogic.getLibrosPorAutor(autor));
        
-        if(listaLibros.isEmpty())
+        if(listaLibros==null || listaLibros.isEmpty())
         {
             throw new WebApplicationException("No existen libros con el autor: "+autor,404);
         }
