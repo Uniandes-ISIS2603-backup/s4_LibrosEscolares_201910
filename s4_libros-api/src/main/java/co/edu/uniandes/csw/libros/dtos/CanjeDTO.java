@@ -42,6 +42,9 @@ public class CanjeDTO implements Serializable {
             if (entidad.getRespuesta() != null) {
                 setRespuesta(new RespuestaDTO(entidad.getRespuesta()));
             }
+            if(entidad.getLibroPedido()!=null){
+            setLibroPedido(new LibroDTO(entidad.getLibroPedido()));
+                    }
             if (entidad.getLibroOfrecido() != null) {
                 setLibroOfrecido(new LibroDTO(entidad.getLibroOfrecido()));
             }

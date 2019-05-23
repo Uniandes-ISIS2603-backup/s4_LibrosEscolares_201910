@@ -12,6 +12,7 @@ import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.CanjePersistence;
 import co.edu.uniandes.csw.libros.persistence.LibroPersistence;
 import co.edu.uniandes.csw.libros.persistence.RespuestaPersistence;
+import co.edu.uniandes.csw.libros.persistence.UsuarioPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -35,6 +36,7 @@ public class CanjeLogic {
     private LibroPersistence persistenceLibros;
     @Inject
     private RespuestaPersistence persistenceRespuesta;
+    @Inject UsuarioPersistence usuarioPersistence;
 
     public CanjeEntity createCanje(CanjeEntity canje) throws BusinessLogicException {
 //        if (canje.getUsuarioQueOfrece().getId()==canje.getUsuarioQueRecibe().getId()){
@@ -44,6 +46,7 @@ public class CanjeLogic {
 //            throw new BusinessLogicException("No se puede ofrecer un libro en canje a cambio de si mismo");
 //        }
 
+    
         canje = persistence.create(canje);
         LOGGER.log(Level.INFO, "cnaje id: "+canje.getId()+" estado: "+canje.getEstado());
         return canje;
