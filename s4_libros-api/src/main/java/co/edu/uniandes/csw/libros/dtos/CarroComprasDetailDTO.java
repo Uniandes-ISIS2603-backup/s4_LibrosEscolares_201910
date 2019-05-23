@@ -18,6 +18,7 @@ import java.util.List;
 public class CarroComprasDetailDTO extends CarroComprasDTO implements Serializable {
 
     private List<LibroDTO> libros = new ArrayList<LibroDTO>();
+    private UsuarioDTO dueno;
 
     public CarroComprasDetailDTO() {
     }
@@ -32,6 +33,7 @@ public class CarroComprasDetailDTO extends CarroComprasDTO implements Serializab
 
             }
         }
+        dueno=new UsuarioDTO(entity.getDueno());
     }
 
     /**
@@ -57,6 +59,17 @@ public class CarroComprasDetailDTO extends CarroComprasDTO implements Serializab
             }
             entity.setLibros(entidadesLibros);
         }
+       
+            entity.setDueno(dueno.toEntity());
+        
         return entity;
+    }
+
+    public UsuarioDTO getDueno() {
+        return dueno;
+    }
+
+    public void setDueno(UsuarioDTO dueno) {
+        this.dueno = dueno;
     }
 }
