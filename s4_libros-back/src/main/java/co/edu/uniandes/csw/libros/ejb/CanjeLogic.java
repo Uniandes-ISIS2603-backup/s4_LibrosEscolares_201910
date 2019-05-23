@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.libros.ejb;
 
 import co.edu.uniandes.csw.libros.entities.CanjeEntity;
+import co.edu.uniandes.csw.libros.entities.LibroEntity;
 import co.edu.uniandes.csw.libros.entities.RespuestaEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.CanjePersistence;
+import co.edu.uniandes.csw.libros.persistence.LibroPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +30,8 @@ public class CanjeLogic {
 
     @Inject
     private CanjePersistence persistence;
+    @Inject
+    private LibroPersistence persistenceLibros;
 
     public CanjeEntity createCanje(CanjeEntity canje) throws BusinessLogicException {
 //        if (canje.getUsuarioQueOfrece().getId()==canje.getUsuarioQueRecibe().getId()){
@@ -84,5 +88,21 @@ public class CanjeLogic {
             }
         }
         return retorno;
+    }
+    
+
+    
+     public CanjeEntity addLibroOfrecido(Long canjeId, Long libroId){
+    CanjeEntity canjeEntity = persistence.find(canjeId);
+    LibroEntity libroEntity = persistenceLibros.find(libroId);
+    canjeEntity.setLibroOfrecido(libroEntity);
+    return persistence.find(canjeId);
+    }
+     
+     public CanjeEntity addLibroPedido(Long canjeId, Long libroId){
+    CanjeEntity canjeEntity = persistence.find(canjeId);
+    LibroEntity libroEntity = persistenceLibros.find(libroId);
+    canjeEntity.setLibroPedido(libroEntity);
+    return persistence.find(canjeId);
     }
 }

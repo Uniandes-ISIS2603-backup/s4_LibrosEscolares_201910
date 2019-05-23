@@ -127,5 +127,26 @@ public class CanjeResource {
         }
         logica.deleteCanje(canjesId);
     }
+    @PUT
+    @Path("{canjeId: \\d+}/libroOfrecido/{libroId: \\d+}")
+    public CanjeDTO addLibroOfrecido(@PathParam("canjeId") Long id, @PathParam("libroId") Long libroId) throws BusinessLogicException {
+        if (logica.findCanje(id) == null) {
+            throw new WebApplicationException("El recurso /canjes/" + id +"/libroOfrecido/"+libroId+ " no existe.", 404);
+        }
+
+        CanjeEntity canje =logica.addLibroOfrecido(id, libroId);
+        return new CanjeDTO(canje);
+    }
+    
+     @PUT
+    @Path("{canjeId: \\d+}/libroPedido/{libroId: \\d+}")
+    public CanjeDTO addLibroPedido(@PathParam("canjeId") Long id, @PathParam("libroId") Long libroId) throws BusinessLogicException {
+        if (logica.findCanje(id) == null) {
+            throw new WebApplicationException("El recurso /canjes/" + id +"/libroPedido/"+libroId+ " no existe.", 404);
+        }
+
+        CanjeEntity canje =logica.addLibroPedido(id, libroId);
+        return new CanjeDTO(canje);
+    }
     
 }
