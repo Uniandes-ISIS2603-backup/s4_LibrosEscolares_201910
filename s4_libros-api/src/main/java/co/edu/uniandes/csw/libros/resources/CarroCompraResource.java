@@ -120,27 +120,26 @@ public class CarroCompraResource {
     
         @DELETE
     @Path("{carroId: \\d+}/libros/{libroId: \\d+}")
-    public CarroComprasDetailDTO removeLibro(@PathParam("carroId") Long id, @PathParam("libroId") Long libroId) throws BusinessLogicException {
+    public void removeLibro(@PathParam("carroId") Long id, @PathParam("libroId") Long libroId) throws BusinessLogicException {
         if (logica.getCarroCompras(id) == null) {
             throw new WebApplicationException("El recurso /carrosCompras/" + id +"/libros/"+libroId+ " no existe.", 404);
         }
         if(logicaLibros.getLibro(libroId)==null){
         }
-        CarroComprasEntity carro =logica.removeBook(id, libroId);
-        return new CarroComprasDetailDTO(carro);
+        logica.removeBook(id, libroId);
 
     }
     
      @PUT
     @Path("{carroId: \\d+}/libros/{libroId: \\d+}")
-    public CarroComprasDetailDTO addLibro(@PathParam("carroId") Long id, @PathParam("libroId") Long libroId) throws BusinessLogicException {
+    public void addLibro(@PathParam("carroId") Long id, @PathParam("libroId") Long libroId) throws BusinessLogicException {
         if (logica.getCarroCompras(id) == null) {
             throw new WebApplicationException("El recurso /carrosCompras/" + id +"/libros/"+libroId+ " no existe.", 404);
         }
         if(logicaLibros.getLibro(libroId)==null){
         }
-        CarroComprasEntity carro =logica.addBook(id, libroId);
-        return new CarroComprasDetailDTO(carro);
+        logica.addBook(id, libroId);
+
     }
     
     

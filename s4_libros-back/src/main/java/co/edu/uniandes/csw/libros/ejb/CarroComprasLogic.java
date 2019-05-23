@@ -65,18 +65,16 @@ public class CarroComprasLogic {
     return persistence.findAll();
     }
     
-    public CarroComprasEntity removeBook(Long carroId, Long libroId){
+    public void removeBook(Long carroId, Long libroId){
     CarroComprasEntity carroEntity = persistence.find(carroId);
     LibroEntity libroEntity = persistenceLibros.find(libroId);
     carroEntity.getLibros().remove(libroEntity);
-    return persistence.find(carroId);
     }
     
-     public CarroComprasEntity addBook(Long carroId, Long libroId){
+     public void addBook(Long carroId, Long libroId){
     CarroComprasEntity carroEntity = persistence.find(carroId);
     LibroEntity libroEntity = persistenceLibros.find(libroId);
     carroEntity.getLibros().add(libroEntity);
-    return persistence.find(carroId);
     }
 
 }

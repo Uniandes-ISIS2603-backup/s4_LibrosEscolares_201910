@@ -92,27 +92,27 @@ public class CanjeLogic {
         }
         return retorno;
     }
-    
-
-    
-     public CanjeEntity addLibroOfrecido(Long canjeId, Long libroId){
-    CanjeEntity canjeEntity = persistence.find(canjeId);
-    LibroEntity libroEntity = persistenceLibros.find(libroId);
-    canjeEntity.setLibroOfrecido(libroEntity);
-    return persistence.find(canjeId);
-    }
-     
-     public CanjeEntity addLibroPedido(Long canjeId, Long libroId){
-    CanjeEntity canjeEntity = persistence.find(canjeId);
-    LibroEntity libroEntity = persistenceLibros.find(libroId);
-    canjeEntity.setLibroPedido(libroEntity);
-    return persistence.find(canjeId);
-    }
      
      public CanjeEntity addRespuesta(Long canjeId, Long respuestaId){
      CanjeEntity canje = persistence.find(canjeId);
      RespuestaEntity respuesta = persistenceRespuesta.find(respuestaId);
      canje.setRespuesta(respuesta);
      return canje = persistence.find(canjeId);
+     }
+     
+     public CanjeEntity addLibroPedido(Long canjeId, Long idLibro){
+         CanjeEntity canje = persistence.find(canjeId);
+         LibroEntity libro = persistenceLibros.find(idLibro);
+         canje.setLibroPedido(libro);
+         return canje;
+         
+     }
+     
+          public CanjeEntity addLibroOfrecido(Long canjeId, Long idLibro){
+         CanjeEntity canje = persistence.find(canjeId);
+         LibroEntity libro = persistenceLibros.find(idLibro);
+         canje.setLibroOfrecido(libro);
+         return canje;
+         
      }
 }

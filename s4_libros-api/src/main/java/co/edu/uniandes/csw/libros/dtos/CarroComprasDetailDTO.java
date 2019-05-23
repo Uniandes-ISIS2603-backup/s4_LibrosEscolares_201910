@@ -26,14 +26,18 @@ public class CarroComprasDetailDTO extends CarroComprasDTO implements Serializab
     public CarroComprasDetailDTO(CarroComprasEntity entity) {
 
         super(entity);
+        if (entity != null) {
+            if (entity.getLibros() != null) {
+                for (LibroEntity libro : entity.getLibros()) {
+                    libros.add(new LibroDTO(libro));
 
-        if (entity.getLibros() != null) {
-            for (LibroEntity libro : entity.getLibros()) {
-                libros.add(new LibroDTO(libro));
-
+                }
+            }
+            if (entity.getDueno() != null) {
+                dueno = new UsuarioDTO(entity.getDueno());
             }
         }
-        dueno=new UsuarioDTO(entity.getDueno());
+
     }
 
     /**
@@ -53,15 +57,17 @@ public class CarroComprasDetailDTO extends CarroComprasDTO implements Serializab
     public CarroComprasEntity toEntity() {
         CarroComprasEntity entity = super.toEntity();
         ArrayList<LibroEntity> entidadesLibros = new ArrayList<LibroEntity>();
-        if (!libros.isEmpty()) {
+        if (libros != null && !libros.isEmpty()) {
             for (LibroDTO libro : libros) {
                 entidadesLibros.add(libro.toEntity());
             }
             entity.setLibros(entidadesLibros);
         }
-       
+
+        if (dueno != null) {
             entity.setDueno(dueno.toEntity());
-        
+        }
+
         return entity;
     }
 

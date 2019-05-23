@@ -160,5 +160,7 @@ public class CanjeResource {
         CanjeEntity canje = logica.addRespuesta(id, respuestaId);
         return new CanjeDTO(canje);
     }
+    
+    
 
 }
