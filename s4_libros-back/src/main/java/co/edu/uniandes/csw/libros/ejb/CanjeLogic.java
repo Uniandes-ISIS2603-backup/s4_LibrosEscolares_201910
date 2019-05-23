@@ -36,7 +36,8 @@ public class CanjeLogic {
     private LibroPersistence persistenceLibros;
     @Inject
     private RespuestaPersistence persistenceRespuesta;
-    @Inject UsuarioPersistence usuarioPersistence;
+    @Inject
+    private UsuarioPersistence usuarioPersistence;
 
     public CanjeEntity createCanje(CanjeEntity canje) throws BusinessLogicException {
 //        if (canje.getUsuarioQueOfrece().getId()==canje.getUsuarioQueRecibe().getId()){
@@ -107,6 +108,7 @@ public class CanjeLogic {
          CanjeEntity canje = persistence.find(canjeId);
          LibroEntity libro = persistenceLibros.find(idLibro);
          canje.setLibroPedido(libro);
+         canje.setUsuarioQueRecibe(libro.getUsuario());
          return canje;
          
      }
@@ -115,6 +117,7 @@ public class CanjeLogic {
          CanjeEntity canje = persistence.find(canjeId);
          LibroEntity libro = persistenceLibros.find(idLibro);
          canje.setLibroOfrecido(libro);
+         canje.setUsuarioQueOfrece(libro.getUsuario());
          return canje;
          
      }

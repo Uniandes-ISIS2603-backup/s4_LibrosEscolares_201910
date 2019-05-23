@@ -7,9 +7,11 @@ package co.edu.uniandes.csw.libros.ejb;
 
 import co.edu.uniandes.csw.libros.entities.CarroComprasEntity;
 import co.edu.uniandes.csw.libros.entities.LibroEntity;
+import co.edu.uniandes.csw.libros.entities.UsuarioEntity;
 import co.edu.uniandes.csw.libros.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.libros.persistence.CarroComprasPersistence;
 import co.edu.uniandes.csw.libros.persistence.LibroPersistence;
+import co.edu.uniandes.csw.libros.persistence.UsuarioPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -25,6 +27,8 @@ public class CarroComprasLogic {
     private CarroComprasPersistence persistence;
     @Inject
     private LibroPersistence persistenceLibros;
+    @Inject
+    private UsuarioPersistence persistenceUsuarios;
 
     public CarroComprasEntity crearCarroCompras(CarroComprasEntity entity) throws BusinessLogicException {
         if (persistence.find(entity.getId()) != null) {
@@ -76,5 +80,12 @@ public class CarroComprasLogic {
     LibroEntity libroEntity = persistenceLibros.find(libroId);
     carroEntity.getLibros().add(libroEntity);
     }
+     
+     public CarroComprasEntity addDueno(Long id, Long duenoId){
+     CarroComprasEntity carroEntity = persistence.find(id);
+     UsuarioEntity dueno = persistenceUsuarios.find(duenoId);
+     carroEntity.setDueno(dueno);
+     return carroEntity;
+     }
 
 }
