@@ -33,24 +33,24 @@ public class CanjeEntity extends BaseEntity implements Serializable {
     private String estado;
     
     @PodamExclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private LibroEntity libroOfrecido;
     
     
     @PodamExclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private LibroEntity libroPedido;
     
     @PodamExclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private UsuarioEntity usuarioQueOfrece;
     
     @PodamExclude
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private UsuarioEntity usuarioQueRecibe;
     
     @PodamExclude
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne(cascade= CascadeType.REMOVE)
     private RespuestaEntity respuesta;
 
     public CanjeEntity(){
